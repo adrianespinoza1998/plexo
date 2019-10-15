@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>xeogl Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="../build/xeogl.js"></script>
+    <script src="js/models/glTFModel.js"></script>
+	<script src="js/annotations/pin.js"></script>
+	<script src="js/annotations/annotation.js"></script>
+
+	<link href="js/annotations/annotation-style.css" rel="stylesheet"/>
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+<body>
+
+<div id="info">
+    <h1><a href="../docs/classes/GLTFModel.html" target="_parent">GLTFModel</a> - importing glTF with alpha mask</h1>
+    <pre id="log">model: <a
+            href='https://sketchfab.com/eliteforcevn' target="_parent">https://sketchfab.com/eliteforcevn</a></pre>
+</div>
+
+<script>
+
+    //---------------------------------------------------
+    // Load the model
+    //---------------------------------------------------
+
+    var model = new xeogl.GLTFModel({
+        src: "models/gltf/ejemplo 7/oficina.gltf"
+    });
+
+   
+
+    //-----------------------------------------------------------------------------------------------------
+    // Camera animation and user control
+    //-----------------------------------------------------------------------------------------------------
+
+    var scene = xeogl.getDefaultScene();
+   
+    
+    var cameraControl = new xeogl.CameraControl(); // User camera control
+	
+model.on("loaded", function () {	
+	
+	  // Position the camera to look at the model
+
+   //var camera = model.scene.camera;
+   //camera.eye = [-110.89, -44.85, 276.65];
+   //camera.look = [-110.89, -44.85, -0.46];
+   //camera.up = [0, 1, 0];
+   //camera.zoom(1);
+
+   // Create three annotations on meshes
+   // within the model
+
+	
+	var a1 = new xeogl.Annotation({
+       mesh: model.meshes[156], // Red handle
+       primIndex: 125,
+       bary: [0.3, 0.3, 0.3],
+       occludable: true,
+       glyph: "1",
+       title: "Sala de estar",
+       desc: "CO2:100",
+       eye: [-10, -0.0, 10],
+       look: [-2.0, -0.5, 0.5],
+       up: [0.239, 0.948, -0.208],
+       pinShown: true,
+       labelShown: false
+   });
+
+var cameraFlight = new xeogl.CameraFlightAnimation({
+            duration: 1
+        });
+
+var lastAnnotation;
+
+   function pinClicked(annotation) {
+       if (lastAnnotation) {
+           annotation.labelShown = false;
+       }
+       annotation.labelShown = true;
+       cameraFlight.flyTo(annotation);
+       lastAnnotation = annotation;
+   }
+
+	a1.on("pinClicked", pinClicked);
+   
+    a1.on("localPos", function(localPos) {
+       console.log("Local pos changed: " + JSON.stringify(localPos, null, "\t"));
+   });
+   
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<div ng-controller="homeAdminCtrl">
+    <div>
+        <form class="card">
+            <div class="card-header">
+                <p>Crear Empresa</p>
+            </div>
+            <div class="card-body row">
+                <div class="col-md-3">
+                    <p>*Nombre: </p>
+                </div>
+                <div class="col-md-9">
+                    <input ng-model="nombreEmpresa" type="text" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <p>*Dirección: </p>
+                </div>
+                <div class="col-md-9">
+                    <input ng-model="direccionEmpresa" type="text" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <p>Telefono: </p>
+                </div>
+                <div class="col-md-9">
+                    <input ng-model="telefonoEmpresa" type="tel" class="form-control">
+                </div>
+                <div class="col-md-12 text-center mt-3">
+                    <input ng-click="crearEmpresa()" type="submit" class="btn btn-secondary" value="Guardar">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

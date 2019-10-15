@@ -1,0 +1,146 @@
+body{
+    background-color: white;
+}
+
+#contHome{
+    background-color: white;
+}
+
+#sidebar {
+    min-width: min-content;
+    max-width: 27%;
+    height: 90vh;
+    color: #1F618D;
+    transition: all 0.5s;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+}
+
+#sidebar.hidden {
+    margin-left: -30%;
+}
+
+@media (max-width: 575px) {
+    #sidebar {
+        margin-left: -400px;
+    }
+    #sidebar.hidden {
+        margin-left: 0;
+    }
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+}
+
+#sidebar ul li a {
+    padding: 15px;
+    display: block;
+    width: 100%;
+}
+
+#sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+hr {
+    border-top: 1px solid #fff;
+    margin-top: 0;
+}
+
+#listaProyectos{
+    transition: all 0.5s;
+    height: min-content;
+    position: relative;
+    z-index: -1;
+}
+
+#listaProyectos.hidden{
+    margin-top: -60px;
+    overflow: hidden;
+}
+
+#proyecto{
+    cursor: pointer;
+}
+
+#dropdown{
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+#dropdown.show{
+    overflow: visible;
+}
+
+#topBar{
+    min-height: max-content;
+    position: relative;
+    /*max-height: 9.3%;*/
+}
+
+#contContenido{
+    position: relative;
+    width: 78%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    transition: all 0.4s;
+    height: 90vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    background-color: white;
+}
+
+#contenido{
+    /*margin: 0 auto;*/
+    width: 500px;
+}
+
+#editarDatos{
+    cursor: pointer;
+    display: inline-block;
+}
+
+#cerrarSesion{
+    cursor: pointer;
+}
+
+#contContenido.maximizar{
+    position: relative;
+    width: 100%;
+    z-index: 0;
+}
+
+#btnProyectos{
+    cursor: pointer;
+    z-index: 1;
+}
+
+iframe{
+    border: 0;
+    width: 102%;
+    height: 102%;
+}
+
+#contTopBar{
+    width: 100%;
+}
+
+#contFormulario{
+    display: inline-block;
+    width: 70%;
+}
+
+form{
+    display: inline-block;
+}

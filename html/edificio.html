@@ -1,0 +1,30 @@
+<div ng-controller="homeAdminCtrl">
+    <form class="card">
+        <div class="card-header">
+            <p>Crear Edificio</p>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-5">
+                <p>Nombre Edificio: </p>
+            </div>
+            <div class="col-md-7">
+                <input ng-model="nombreEdificio" type="text" class="form-control">
+            </div>
+            <div class="col-md-5">
+                <p>Dirección: </p>
+            </div>
+            <div class="col-md-7">
+                <input ng-model="direccionEdificio" type="text" class="form-control">
+            </div>
+            <div class="col-md-5">
+                <p>Numero de pisos</p>
+            </div>
+            <div class="col-md-7">
+                <input ng-model="numPisos" type="number" class="form-control">
+            </div>
+            <div class="col-md-12 text-center mt-3">
+                <input ng-click="crearEdificios()" type="submit" class="btn btn-secondary" value="Guardar">
+            </div>
+        </div>
+    </form>
+</div>

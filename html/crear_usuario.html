@@ -1,0 +1,52 @@
+<div ng-controller="homeAdminCtrl">
+    <form class="card">
+        <div class="card-header">
+            <p>Crear Usuario</p>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-4">
+                <p>*Nombre: </p>
+            </div>
+            <div class="col-md-8">
+                <input ng-model="nombre_usuario" type="text" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <p>*Apellido Paterno: </p>
+            </div>
+            <div class="col-md-8">
+                <input ng-model="ap_paterno_usuario" type="text" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <p>*Apellido Materno: </p>
+            </div>
+            <div class="col-md-8">
+                <input ng-model="ap_materno_usuario" type="text" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <p>*Rut con digito verificador: </p>
+            </div>
+            <div class="col-md-8">
+                <input ng-model="rut" ui-mask="" type="text" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <p>*Empresa: </p>
+            </div>
+            <div class="col-md-8">
+                <select class="form-control">
+                    <option ng-repeat="empresa in listaEmpresas" ng-click="admin(empresa.id_empresa)">
+                        {{empresa.nombre_empresa}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <p>*Email: </p>
+            </div>
+            <div class="col-md-8">
+                <input ng-model="correo_usuario" type="email" class="form-control">
+            </div>
+            <div class="col-md-12 text-center mt-3">
+                <input ng-click="crearUsuario()" type="submit" class="btn btn-secondary" value="Guardar">
+            </div>
+        </div>
+    </form>
+</div>

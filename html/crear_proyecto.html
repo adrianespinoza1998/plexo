@@ -1,0 +1,111 @@
+<div ng-controller="homeAdminCtrl">
+    <form class="card">
+        <div class="card-header">
+            <p>Crear proyecto</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 col-lg-5">
+                    <p>*Empresa: </p>
+                </div>
+                <div class="col-md-8 col-lg-7">
+                    <select class="form-control">
+                        <option ng-repeat="empresa in listaEmpresas" ng-click="admin(empresa.id_empresa)">
+                        {{empresa.nombre_empresa}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-4 col-lg-5">
+                    <p>*Tipo de proyecto: </p>
+                </div>
+                <div class="col-md-8 col-lg-7">
+                    <select class="form-control">
+                        <option ng-repeat="tipo in tiposProyectos">
+                            {{tipo.nombre_tipo_proyecto}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-4 col-lg-5">
+                    <p>*Nombre: </p>
+                </div>
+                <div class="col-md-8 col-lg-7">
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-lg-5">
+                    <p>*Dirección: </p>
+                </div>
+                <div class="col-md-8 col-lg-7">
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-lg-5">
+                    <p>Administrador del proyecto: </p>
+                </div>
+                <div class="col-md-8 col-lg-7">
+                    <select class="form-control">
+                        <option ng-repeat="usuario in listaUsuarios">
+                        {{usuario.nombre+' '+usuario.ap_paterno}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-4 col-lg-5">
+                    <p>*Edificio: </p>
+                </div>
+                <div class="col-md-8 col-lg-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <select class="form-control">
+                                <option ng-repeat="edificio in listaEdificio" ng-click="prueba(edificio.nombre_edificio)">
+                                    {{edificio.nombre_edificio}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-secondary" ng-click="ventanaEdificio()">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-5">
+                    <p>Recinto: </p>
+                </div>
+                <div class="col-md-8 col-lg-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <select class="form-control">
+                                <option ng-repeat="recinto in listaRecintos">
+                                    {{recinto.nombre_recinto}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-secondary" ng-click="ventanaRecintos()">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-5">
+                    <p>Estancia: </p>
+                </div>
+                <div class="col-md-8 col-lg-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <select class="form-control">
+                                <option>Estancia 1</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-secondary">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-5">
+                    <p>Subir proyecto: </p>
+                </div>
+                <div class="col-md-8 col-lg-7">
+                    <button class="btn btn-secondary">Examinar equipo</button>
+                </div>
+                <div class="col-md-12 text-center mt-3">
+                    <input type="submit" class="btn btn-secondary">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

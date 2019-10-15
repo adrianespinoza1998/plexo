@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="00485ac5-a960-4452-bc15-6798b82b66f6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/html/home_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/home_admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/proyectoCtrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/proyectoCtrl.js" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/html/forgot_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/forgot_email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/login.html" afterDir="false" />
+>>>>>>> parent of 3532d3f... p
+      <change beforePath="$PROJECT_DIR$/webservices/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webservices/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1PmjZXYvQn4KEZk9ReLC38E3LXa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/webservices" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\AppServ\www\login_alpha\html" />
+      <recent name="C:\AppServ\www\login_alpha" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\AppServ\www\login_alpha\js" />
+      <recent name="C:\AppServ\www\login_alpha\imagenes" />
+      <recent name="C:\AppServ\www\login_alpha\css" />
+      <recent name="C:\AppServ\www\login_alpha\webservices" />
+      <recent name="C:\AppServ\www\login_alpha" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration name="importing_gltf_BananaTree.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/login_alpha/importing_gltf_BananaTree.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/login_alpha/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.importing_gltf_BananaTree.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="00485ac5-a960-4452-bc15-6798b82b66f6" name="Default Changelist" comment="" />
+      <created>1562102871123</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1562102871123</updated>
+      <workItem from="1562102872330" duration="2348000" />
+      <workItem from="1562352628222" duration="4840000" />
+      <workItem from="1562691443825" duration="11912000" />
+      <workItem from="1562703767744" duration="1148000" />
+      <workItem from="1562704954460" duration="2499000" />
+      <workItem from="1562707568980" duration="4266000" />
+      <workItem from="1562856529305" duration="4893000" />
+      <workItem from="1562862537562" duration="6998000" />
+      <workItem from="1562876575083" duration="6370000" />
+      <workItem from="1562945607651" duration="5798000" />
+      <workItem from="1562953896383" duration="3543000" />
+      <workItem from="1563374494745" duration="21363000" />
+      <workItem from="1563459996890" duration="17432000" />
+      <workItem from="1563548865317" duration="14890000" />
+      <workItem from="1563569725758" duration="236000" />
+      <workItem from="1563894203131" duration="4901000" />
+      <workItem from="1563909083475" duration="904000" />
+      <workItem from="1563914850391" duration="2190000" />
+      <workItem from="1564068579141" duration="15229000" />
+      <workItem from="1564153745767" duration="713000" />
+      <workItem from="1564155359878" duration="144000" />
+      <workItem from="1564155522305" duration="8022000" />
+      <workItem from="1564498024559" duration="1647000" />
+      <workItem from="1564500658016" duration="926000" />
+      <workItem from="1564511796685" duration="4408000" />
+      <workItem from="1564521781030" duration="168000" />
+      <workItem from="1564668916097" duration="6985000" />
+      <workItem from="1564680059329" duration="4815000" />
+      <workItem from="1564698757377" duration="1836000" />
+      <workItem from="1564757834085" duration="4866000" />
+      <workItem from="1564855076377" duration="229000" />
+      <workItem from="1564877580996" duration="249000" />
+      <workItem from="1564878475604" duration="614000" />
+      <workItem from="1564936941156" duration="2134000" />
+      <workItem from="1564950774976" duration="2304000" />
+      <workItem from="1565101991928" duration="16014000" />
+      <workItem from="1565276395936" duration="18075000" />
+      <workItem from="1565362799676" duration="17118000" />
+      <workItem from="1565626593892" duration="626000" />
+      <workItem from="1565653067693" duration="37000" />
+      <workItem from="1565708648898" duration="11533000" />
+      <workItem from="1565911251336" duration="446000" />
+      <workItem from="1565968532278" duration="9926000" />
+      <workItem from="1566228337216" duration="614000" />
+      <workItem from="1566257101809" duration="1242000" />
+      <workItem from="1566313896904" duration="975000" />
+      <workItem from="1566314967189" duration="2766000" />
+      <workItem from="1566325560410" duration="11684000" />
+      <workItem from="1566485458292" duration="493000" />
+      <workItem from="1566486226657" duration="11619000" />
+      <workItem from="1566573332646" duration="4262000" />
+      <workItem from="1566584598892" duration="7859000" />
+      <workItem from="1566864633595" duration="2390000" />
+      <workItem from="1566917233894" duration="16942000" />
+      <workItem from="1566943907251" duration="1694000" />
+      <workItem from="1567019295010" duration="21000" />
+      <workItem from="1567093523217" duration="6353000" />
+      <workItem from="1567104782722" duration="3619000" />
+      <workItem from="1567178045477" duration="8573000" />
+      <workItem from="1567466055086" duration="172000" />
+      <workItem from="1567526679043" duration="1906000" />
+      <workItem from="1567543040451" duration="1829000" />
+      <workItem from="1567703281188" duration="5372000" />
+      <workItem from="1567795920315" duration="3354000" />
+      <workItem from="1567985747891" duration="652000" />
+      <workItem from="1568039262895" duration="1240000" />
+      <workItem from="1568124773702" duration="19244000" />
+      <workItem from="1568296586351" duration="81000" />
+      <workItem from="1568296778966" duration="22392000" />
+      <workItem from="1568384029772" duration="6145000" />
+      <workItem from="1568423523765" duration="1412000" />
+      <workItem from="1568479004032" duration="461000" />
+      <workItem from="1568673379618" duration="625000" />
+      <workItem from="1568727211903" duration="11235000" />
+      <workItem from="1569334004135" duration="9565000" />
+      <workItem from="1569505277086" duration="8530000" />
+      <workItem from="1569513916929" duration="9338000" />
+      <workItem from="1569599173853" duration="2579000" />
+      <workItem from="1569607416892" duration="19000" />
+<<<<<<< HEAD
+      <workItem from="1569938349083" duration="9717000" />
+=======
+      <workItem from="1569938349083" duration="5414000" />
+>>>>>>> parent of 3532d3f... p
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

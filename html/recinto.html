@@ -1,0 +1,24 @@
+<div ng-controller="homeAdminCtrl">
+    <form class="card">
+        <div class="card-header">
+            <p>Crear recinto</p>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-4">
+                <p>Nombre recinto: </p>
+            </div>
+            <div class="col-md-8">
+                <input ng-model="nombreRecinto" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <p>Numero de piso: </p>
+            </div>
+            <div class="col-md-8">
+                <input ng-model="numPiso" type="number" class="form-control">
+            </div>
+            <div class="col-md-12 text-center mt-3">
+                <input ng-click="crearRecinto()" type="submit" class="btn btn-secondary" value="Guardar">
+            </div>
+        </div>
+    </form>
+</div>

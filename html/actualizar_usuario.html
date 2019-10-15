@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/homestyle.css">
+<div ng-app="app">
+    <div ng-controller="homeCtrl">
+        <form class="card">
+            <h1 class="display-4 card-header text-center">Datos del usuario</h1>
+            <div class="card-body justify-content-center">
+                <p>Nombre: <input type="text" class="form-control" ng-model="nombre"></p>
+                <p>Apellido paterno: <input type="text" class="form-control" ng-model="ap_paterno"></p>
+                <p>Apellido materno: <input type="text" class="form-control" ng-model="ap_materno"></p>
+                <p>Email: <input type="email"class="form-control" ng-model="email"></p>
+                <p>Contraseña: <input type="password" class="form-control" ng-model="contrasena"></p>
+                <div class="text-center">
+                    <input id="btnModificar" type="submit" class="btn btn-dark align-middle" value="Modificar" ng-click="modificar()">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

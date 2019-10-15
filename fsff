@@ -1,0 +1,635 @@
+[33m86194fa[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m p
+[33m3532d3f[m p
+[33m161bfd6[m p
+[33m9c252f3[m p
+[33mfd5c11c[m p
+[33ma1dd4cd[m p
+[33m7710159[m p
+[33md0b7a62[m p
+[33m0b3743e[m p
+[33m6cd5948[m p
+[33m981801e[m p
+[33m4b9b1a1[m p
+[33me2f3bbc[m p
+[33mcf63cf2[m p
+[33m7f59bdc[m p
+[33m2a84c86[m p
+[33m7082bc9[m p
+[33m0546ec3[m p
+[33mad44c31[m p
+[33mb23fb27[m p
+[33m35b864a[m p
+[33m845d0cf[m p
+[33m3608e6f[m p
+[33md5f731b[m p
+[33m367d56b[m p
+[33m2211642[m p
+[33m3b33f9f[m p
+[33m7e716e0[m 2p
+[33mc688164[m p
+[33m47a09ae[m p
+[33m0bc9323[m p
+[33m2a633e2[m p
+[33m701664a[m p
+[33m459a162[m p
+[33m3759fdf[m p
+[33m8c3965b[m p
+[33m1f2e830[m p
+[33m3a381cd[m p
+[33mb6ed83b[m p
+[33m1803982[m p
+[33m48ca3f8[m p
+[33md637151[m p{
+[33m904d2d8[m p
+[33m546b90f[m p
+[33m81053f7[m p
+[33m75c9833[m p
+[33m910eff8[m p
+[33me8b48aa[m p
+[33mce636ea[m p
+[33mdd8370e[m p
+[33mc3a88b3[m p
+[33m56ff970[m p
+[33m0823deb[m p
+[33m2d6f131[m p
+[33m8a83c18[m p
+[33m356008f[m p
+[33m296db19[m p
+[33m1729f31[m p
+[33m2c86891[m p
+[33m80f07c3[m p
+[33m44e5f3d[m p
+[33me8a7ba4[m p
+[33m4279751[m p2 2
+[33meba3bab[m p
+[33m388b006[m p
+[33mab4f662[m p
+[33mb11f4fb[m p
+[33m9e0bc17[m p
+[33ma6b434a[m p
+[33mad5abfd[m p
+[33m512aebd[m p
+[33m8b22b66[m p
+[33mb7b390e[m p
+[33m45ac4d0[m p
+[33maed6da6[m p
+[33maa6701d[m p
+[33mddfee97[m p
+[33me38cb38[m p
+[33m100f11b[m p
+[33m02c73f6[m p
+[33me67fe48[m p
+[33m9241dfd[m p
+[33m4407215[m p
+[33mf616a2e[m p
+[33mccacee7[m p
+[33m73700bc[m p
+[33mb182505[m p
+[33m91867b9[m p
+[33m381e57d[m 2p
+[33m2cf5e88[m p
+[33mf00d3a5[m p
+[33mfe4075d[m p
+[33m3455d33[m p
+[33m3f3a63f[m p
+[33mb4c7c1e[m p
+[33m4be3ae3[m p
+[33m6d74eba[m p
+[33m39ce394[m p
+[33m6207d85[m p
+[33mc9073f4[m p
+[33m920654f[m p
+[33m72586a9[m p
+[33m1430f91[m p
+[33m513d79c[m p
+[33m05c0814[m p
+[33me94e64a[m p2
+[33m83054e6[m p
+[33m894933b[m p
+[33mcf203c5[m p
+[33md0bc7e0[m p
+[33mfbdb2cf[m p
+[33mc848a25[m p
+[33m3ca3a0a[m p
+[33m9ae9f8f[m p
+[33m7be8499[m p
+[33m93ca455[m p
+[33me188965[m p2
+[33ma41cec0[m p
+[33me906238[m p
+[33mbdbe1da[m  p#
+[33m1583f25[m p
+[33m158f1e5[m p
+[33m2405407[m p
+[33me17bd39[m p2
+[33m0a78503[m se agrega p
+[33m8b5740d[m p
+[33m3996d32[m p
+[33m59ff51b[m p
+[33m64e2684[m p
+[33m4a27615[m p
+[33m67b2d79[m p
+[33m52def3a[m p
+[33m1310c28[m p
+[33m333bd40[m p
+[33m7f3df85[m p
+[33m7e45f83[m 2p
+[33m2e1850d[m 2p
+[33me3eb28f[m 2p
+[33mb15f43c[m p
+[33mfacab31[m p
+[33me6adb8e[m p
+[33m714c85b[m p
+[33m65d7a41[m p
+[33m3e73949[m p
+[33m84c4bcc[m p
+[33m9240f91[m p
+[33m0f88fcd[m p
+[33mc09173b[m p
+[33mce7a775[m prueba
+[33m161ca7f[m p
+[33m0a91983[m 2p
+[33mb705b45[m add hide
+[33m64331d7[m p
+[33m6d6b78b[m p
+[33me3d2c97[m p
+[33m5d25a93[m p
+[33m18c57b0[m p
+[33m424ad04[m p
+[33m75b0ca9[m p
+[33m0e6b261[m p
+[33m9d8130b[m p
+[33mcec7f44[m p
+[33m261deef[m p
+[33m60d8856[m p
+[33mf61a9a5[m p
+[33mbc7fdc9[m p
+[33macfacff[m p
+[33ma1e42c6[m p
+[33me8dfe18[m p
+[33m9d20445[m p
+[33mdf1ee47[m p
+[33mc3f9086[m p
+[33m978835a[m p
+[33m477d6d4[m 2p
+[33m876cb1f[m p
+[33m74be231[m p
+[33m3857003[m p
+[33m3600c8f[m p
+[33m507dbc6[m p
+[33m2b4fb67[m p
+[33mda91d01[m p
+[33m05c98f4[m p
+[33m1195e0d[m p
+[33ma0c510f[m p2
+[33m0ca2843[m p
+[33me0aea24[m p
+[33mbbb610e[m p
+[33m958fc5c[m p
+[33mc54f263[m p
+[33mff388f6[m p
+[33md1472ec[m p
+[33m86dab73[m p
+[33mdec1920[m p
+[33mfd336b5[m p
+[33m8f44992[m p
+[33m29f3abf[m p2
+[33m14b401d[m p
+[33m6dd6109[m p
+[33m9eb8c1e[m p
+[33ma6820f9[m p
+[33m130b2d6[m p
+[33m811c594[m p
+[33mec11a4b[m p
+[33m80d45d7[m p
+[33mfd70650[m p2
+[33me5a60cf[m p
+[33md1a8047[m p
+[33mdc30111[m p
+[33m21f2be5[m p
+[33m7587209[m p
+[33mcbca582[m p
+[33mc78ed24[m p
+[33m4b8a943[m p2
+[33m0ae4aa7[m p
+[33md79f520[m p
+[33m9f0dd80[m p
+[33m8ef8fb2[m p
+[33m560a5e2[m p
+[33m0071cbc[m p
+[33mba2cac8[m p
+[33m3d3cc81[m p
+[33m92e30b0[m p
+[33mb2b5611[m p
+[33m59a5c3f[m p
+[33m20354e9[m p
+[33m2dd9e86[m p
+[33mb57cef5[m p
+[33mab712ce[m p
+[33m98678fe[m p2
+[33m62c6553[m p
+[33mf9f52e8[m p
+[33m778d025[m p
+[33mf40b3e2[m p
+[33me7934ab[m p
+[33m229bb56[m 2p
+[33mbff4f33[m p
+[33m7eba567[m p
+[33m06a551d[m p
+[33m2c59357[m p2
+[33m781beea[m p2
+[33me924c2e[m p
+[33m5627d7a[m p
+[33m4641174[m p
+[33m9aaf683[m p
+[33m99172d8[m p
+[33m1e323c0[m p
+[33me67c836[m p
+[33m6407299[m p
+[33m5c351dd[m p
+[33m21b31c0[m p
+[33m1cf8643[m p
+[33m93dddc5[m p
+[33m71cb2f8[m p
+[33mf090c53[m fix login
+[33mc8dfc9f[m fix reset css
+[33mcbebdd6[m reset css
+[33m54e3283[m fix login
+[33m56ab7a1[m fix login2
+[33m403f75e[m fix login2
+[33me9b29d5[m fix login2
+[33m93df314[m fix login
+[33mf33324b[m fix index
+[33mf313793[m fix logos
+[33mfb97a0f[m fix lorem
+[33m689ccd1[m fix login
+[33m3346b96[m back index
+[33m6c8959c[m fix index
+[33madc3e31[m fix index
+[33m5558aa3[m fix stylesheet
+[33m1851047[m fix imagen
+[33m571fd3f[m Se cambian rutas
+[33me343db5[m Se mueve login a carpeta html
+[33md449788[m p
+[33m0e0ba92[m p
+[33mc156c00[m p
+[33m44d6e54[m se crea carpeta html
+[33m265cd60[m p
+[33mfe5fd9b[m p
+[33m2064ad2[m p
+[33m463ed25[m p
+[33m186eef1[m p
+[33m8c4a2b2[m p
+[33md878004[m p
+[33mae6f863[m p
+[33m381070d[m p
+[33mc736641[m p
+[33me15ccf4[m p
+[33m91c8b11[m p
+[33mc1653c9[m p
+[33m0d9030b[m p
+[33m0e2d2d2[m p
+[33m58bf63a[m p
+[33m6558d84[m p
+[33mf378e8d[m p
+[33mcc62e75[m p
+[33m9a07a2b[m p
+[33m8395055[m p
+[33m581c2ad[m p
+[33mc4f70aa[m p
+[33mf667f48[m p
+[33ma1f4b91[m p
+[33mb9c40a6[m p
+[33mbc53775[m p
+[33m4557347[m p
+[33m8a2dc31[m p
+[33m9315cf2[m p
+[33m03337ea[m p
+[33mba627a0[m p
+[33m36d6fce[m p
+[33m90e5010[m p
+[33m37b1bb4[m p
+[33m4a1e528[m p
+[33m93451b7[m p
+[33m63cf145[m p
+[33m8c9bb75[m p
+[33m96c0023[m p
+[33m1799017[m p
+[33md3d1c3c[m p
+[33m71126b6[m p2
+[33m4cebc21[m p 2
+[33m7590509[m p2
+[33ma59e542[m p2 2
+[33me7f8e0a[m p
+[33m41f5b6b[m p
+[33mb303602[m p2
+[33md268e3e[m p
+[33m2f1cc16[m p
+[33m9f22649[m p
+[33mfadbebb[m p
+[33mb375dea[m p
+[33m3645aed[m p
+[33m0d4413f[m p2
+[33mcb879aa[m p
+[33m8a2896b[m p2
+[33m6afa996[m p
+[33mfe37eef[m p2
+[33me291046[m p
+[33m5807f95[m p
+[33m7eff179[m P
+[33mb8d6bbc[m p2
+[33m2d9129f[m p
+[33md2b20e7[m p
+[33mec4147d[m p
+[33me476eea[m p
+[33m7ec27c2[m p
+[33m11fad6f[m p
+[33m2c59a4d[m p
+[33m0b28173[m p
+[33m9740e31[m 2p
+[33m13102c1[m p
+[33m23de597[m p
+[33m2542254[m p
+[33m0aba762[m p
+[33md768059[m p
+[33m401b5e7[m p
+[33m7f09fc1[m p
+[33mf3f663a[m p
+[33m67eb6f7[m p
+[33ma7518ed[m p
+[33mf71fe23[m p
+[33m6211bb3[m p
+[33mda59788[m p
+[33mff6fcd5[m p
+[33m32d5494[m p
+[33mbefb51a[m p
+[33m9b923c7[m p
+[33m7ca9eae[m P
+[33m2d8ca54[m p
+[33m9a6a437[m p
+[33m76f0a45[m p
+[33m1d073a2[m p
+[33m3942dcd[m p
+[33m8244555[m p
+[33mc6fbc8d[m p
+[33mc03e8db[m p
+[33m2572bd9[m p
+[33md32e0e3[m p
+[33m005a6da[m p
+[33mea17d28[m p
+[33mc6076ba[m p
+[33m861560b[m p
+[33mdce9c78[m p
+[33m1c1070f[m p
+[33me967b86[m p
+[33m5b2a04d[m p
+[33m0d1c137[m p
+[33m1968c3a[m p
+[33m196d836[m p
+[33mf520d97[m p2
+[33m84cd2b1[m p
+[33m11b7e2f[m p
+[33mf6d9e59[m p
+[33mdd83e5d[m p2
+[33m0688b87[m p
+[33mf011cb8[m p
+[33ma0ca5a2[m p
+[33mb59cb08[m p
+[33mabfa62e[m p
+[33m1be1df2[m p
+[33m301e4e8[m p
+[33mf3eb832[m p
+[33m283f943[m p
+[33mec6107e[m p
+[33mb41e72f[m p
+[33me461dd6[m p
+[33m267a282[m p
+[33m060472f[m p
+[33m48ee012[m p
+[33m69a472f[m p
+[33m315c3eb[m p
+[33m51f63f1[m p
+[33m3d56136[m p
+[33m6103e21[m p
+[33m38e27bb[m p
+[33m87afb7a[m p
+[33mf3f9e8c[m p
+[33mf4e63ed[m p
+[33mf29ed49[m p
+[33mb7e4d3e[m p
+[33m03d7ac4[m p
+[33m2e5fe64[m p
+[33mc46ffb5[m p2
+[33m6e5a8c0[m p
+[33m83086af[m p
+[33m5b511eb[m p
+[33md4d8e7e[m p2
+[33ma0d3854[m p2
+[33mbb779c7[m p
+[33m5282a55[m p
+[33mb234752[m p
+[33m3699d0e[m p
+[33m5309e73[m p
+[33md8fe60f[m p
+[33mec961a6[m p
+[33m5e7432d[m p
+[33m091da84[m p
+[33m4d6a325[m p
+[33m2ee91a3[m p
+[33ma20bdbd[m p
+[33m48c4309[m p
+[33medf36cc[m p
+[33m19b6a8b[m p
+[33m3799426[m p
+[33m028518c[m 2p
+[33m90b9772[m p
+[33m8fc0cf9[m p2
+[33m45e4a32[m p
+[33m6ea2d2e[m p
+[33mdbb9509[m p
+[33m27c4d7c[m p
+[33m32c3750[m p
+[33mbded0a9[m p
+[33mdbf10d9[m p
+[33m9d51b6b[m p
+[33mfea9364[m p
+[33m228603d[m p2
+[33m5589db3[m p
+[33m25ae790[m p
+[33m44426e9[m p
+[33mc808595[m p
+[33me98ec1e[m p
+[33md21dcc2[m p
+[33mbb39720[m p
+[33m4814893[m p
+[33m58e6056[m p
+[33m8aca443[m p
+[33m3b5a4fa[m p
+[33m85816ae[m p
+[33m5ecb18e[m p
+[33mc84ee8a[m p
+[33m2cea4b2[m p
+[33mfa80ded[m p
+[33m7832cce[m p
+[33mb8022f7[m p
+[33mc595dfa[m p
+[33m26c8563[m p
+[33m6a4258a[m p
+[33m8405199[m p
+[33m5949e94[m p
+[33m66796f5[m p
+[33md779735[m p
+[33m5464c57[m p
+[33mf8a998f[m p
+[33m0cfba32[m p
+[33m79eee1f[m p
+[33m023e72e[m p
+[33mc6c6a22[m p
+[33m7292b7f[m p
+[33m99e2c27[m p
+[33m3783ced[m p
+[33m82c50ee[m p
+[33m6baa96d[m p
+[33md306f5d[m p
+[33m6714680[m p
+[33mce53264[m p
+[33md06e421[m p
+[33m278b43a[m p
+[33m0108b2c[m p
+[33md6dadc8[m p
+[33mcb9ec1d[m p
+[33mce71b78[m p
+[33m661630f[m p
+[33m7c8d8b3[m p
+[33m05ae4c9[m p
+[33mf6b5c64[m p
+[33m62b9c1d[m p
+[33m2329359[m p
+[33mc673fda[m P
+[33m9d3c480[m p
+[33mbe83fd7[m p
+[33m8765ddf[m p
+[33mb6eaa77[m p
+[33mbf8965b[m p
+[33me52f6c9[m p
+[33ma805b94[m p
+[33m3674fc0[m p
+[33m0336b37[m p
+[33m317209b[m p
+[33mb0b15ab[m p
+[33m4315b78[m p}
+[33m7394a11[m p
+[33m959bf85[m p
+[33m8a44e99[m p
+[33m2ebdd5f[m p
+[33m7534d65[m p
+[33mc7cbd57[m p
+[33m1a69190[m p
+[33mef823eb[m p
+[33m82b434c[m p
+[33mc892b04[m p
+[33m3bf25c1[m p
+[33m9b2987d[m p
+[33m6735d63[m p
+[33m2db8478[m p
+[33m62f1f56[m p
+[33mcdcb437[m p
+[33me47ed4f[m se arregla getproyectos
+[33m3d27c91[m p
+[33m5ef2e10[m se cambian webservices
+[33m150a6ab[m p
+[33m1968b24[m p
+[33mb5821aa[m p
+[33me365dba[m p
+[33ma4b8f1a[m se arregla base de datos
+[33meac750c[m p
+[33m3b9879a[m p
+[33m0336b2c[m p
+[33mcb222fa[m p
+[33m6d3ccc1[m se agregan popups
+[33m4753f2f[m p
+[33m38ffe00[m p
+[33m0cc4b34[m p
+[33m9daab8f[m p
+[33m4ca2175[m p
+[33m6c72b6d[m p
+[33m869fea0[m p
+[33me53531c[m p
+[33mb8f0552[m fix tree
+[33mfeaebf8[m p
+[33m3248384[m p
+[33m539be4c[m p
+[33m36df81e[m p
+[33m6ab3645[m fix tree
+[33ma707082[m p
+[33m56b07b7[m p
+[33m5a4c1ff[m p
+[33m02db6a3[m p
+[33m1c90994[m p
+[33m4d23368[m p
+[33m443ddbe[m p
+[33m2dbd290[m p
+[33mc341113[m p
+[33m3b89b2e[m p
+[33me3be073[m w
+[33ma2fc97b[m m
+[33m41d4a1b[m fix user icon
+[33ma636c0b[m fix icono usuario
+[33m7981964[m fix icono usuario
+[33m5fad6a0[m fix user
+[33m8c1b9c7[m fix
+[33mef50324[m fix
+[33m4bec2a9[m fix api
+[33m4dcfcee[m fix api
+[33m94df00e[m fix sidebar
+[33m67bd6cf[m fix sidebar
+[33m4e1b1b6[m fix sidebar
+[33m31086b1[m fix tree
+[33mf1be782[m se agrega arbol
+[33me8c4a2e[m fix modelo
+[33m211e9c7[m fix
+[33m8929e0f[m fix
+[33m4c1fa36[m fix
+[33mba7a747[m fix sidebar
+[33mca148ad[m fix modelo
+[33md3f8c61[m fix sidebar
+[33mce8dedd[m fix sidebar
+[33mf27df39[m fix sidebar
+[33m7c357aa[m fix sidebar
+[33m5f9c2e6[m fix sidebar
+[33m9ed3843[m fix sidebar
+[33m316632c[m fix sidebar
+[33m9df36f9[m fix sidebar
+[33m9d9fe11[m fix sidebar
+[33m56be9af[m fox sidebar
+[33m61347ef[m fix sidebar
+[33mcd95472[m fix sidebar
+[33me02eaf8[m fix topbar
+[33m2da0c77[m fix topbar
+[33me65683d[m fix topbar
+[33m978d676[m fix topbar
+[33ma0e5435[m fix topbar
+[33m96f1f21[m fix topbar
+[33maf206b9[m se cambia ancho de topbar
+[33m8e4ee5c[m Se cambian columnas
+[33mdc9d81b[m cambio
+[33m19d8251[m se cambia propiedad de navbar
+[33me1bdbd0[m se cambia propiedad de navbar
+[33m0eebe9b[m Se cambia propiedad de boton
+[33m5fe89d4[m Se cambia posicion de boton
+[33m6d1025c[m se cambia valor de columnas
+[33m2112662[m se cambia ancho de sidebar
+[33m42ddecb[m se cambia largo de barra lateral
+[33m32cfeb9[m Se cambia largo de barra lateral
+[33m742a361[m se cambia background
+[33mdeb80ef[m se añade background
+[33md168a82[m Se cambia columna
+[33mfd1e6ae[m Se quitan bordes a iframe
+[33m0dba726[m Se cambia boton de sesión
+[33m47f038d[m Se cambia largo de iframe
+[33mf555b40[m Se cambia comportamiento de boton
+[33m06b5a0b[m Se añade titulo a botones
+[33m1c1b8df[m se cambia color de botones
+[33macc3026[m Se agregan botones
+[33m2a44e02[m Se cambian los directorios
+[33mb2fda43[m first commit

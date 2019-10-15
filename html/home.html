@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/homestyle.css">
+<body>
+
+    <div class="container-fluid" id="contTopBar">
+    <!--top bar-->
+        <nav class="navbar navbar-light bg-light text-center border border-light row" id="topBar">
+            <div class="col-md-1">
+                <div class="row">
+                    <div class="col-6">
+                        <button ng-click="activarSideNav()" class="text-secondary btn btn-light"><i class="fa fa-bars" aria-hidden="true" data-tap-disabled="false"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <img src="https://www.plexobuilding.com/plexo/imagenes/logo_plexo.png" width="100px">
+            </div>
+            <div class="col-md-5">
+                <div class="float-right">
+                    <button title="Elemento" class="btn btn-light text-secondary" ng-click="verElemento()" style="display: inline-block">
+                        <a class="fa fa-plus"></a>
+                    </button>
+                    <button title="Propiedad" class="btn btn-light text-secondary" ng-click="verPropiedad()" style="display: inline-block">
+                        <a class="fa fa-plus"></a>
+                    </button>
+                    <button title="Mantención" class="btn btn-light text-secondary" ng-click="verMantencion()" style="display: inline-block"><a class="fa fa-cog"></a></button>
+                    <div class="dropdown" style="display: inline-block">
+                        <button type="button" class="text-secondary btn btn-light dropdown-toggle" data-toggle="dropdown">
+                            <a class="fa fa-user align-middle" style="font-size: 200%"></a><a>      </a><a class="text-center">{{email}}</a></button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a id="editarDatos" class="dropdown-item dr" ng-click="editarDatos()">Editar datos de usuario</a>
+                            <a id="cerrarSesion" class="dropdown-item" ng-click="cerrarSesion()">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!--Wrap content-->
+        <div id="contContenido" ng-class="{'maximizar': showSide}">
+            <iframe id="modelo" src="{{linkProyecto}}"></iframe>
+        </div>
+    </div>
+
+    <!--sidebar-->
+
+    <nav id="sidebar" class="bg-secondary text-white border-secondary" ng-class="{'hidden': showSide}">
+        <div class="bg-secondary dropdown container-fluid" style="position: relative; z-index: 0">
+            <div ui-tree class="p-2">
+                <!--ol ui-tree-nodes="" ng-model="nodes">
+                    <li ng-repeat="item in nodes" ui-tree-node>
+                        <div class="btn btn-secondary" ui-tree-handle>
+                            {{item.title}}
+                        </div>
+                        <ol ui-tree-nodes="" ng-model="item.nodes">
+                            <li ng-repeat="subitem in item.nodes" ui-tree-node>
+                                <div class="btn btn-secondary" ui-tree-handle>
+                                    {{subitem.title}}
+                                </div>
+                            </li>
+                        </ol>
+                    </li>
+                </ol-->
+                <!--ul ng-repeat="edificio in listaProyecto">
+                    <li>{{edificio.nombre_edificio}}</li>
+                    <ul ng-repeat="proyecto in edificio.proyectos">
+                        <li></li>
+                    </ul>
+                </ul-->
+                <ul ng-repeat="proyecto in listaProyecto">
+                    <li style="cursor:pointer;" ng-click="toggleProyecto()">{{proyecto.edificio}}</li>
+                    <ul ng-show="showProyecto" ng-repeat="proyecto in proyecto.nodes">
+                        <li style="cursor: pointer">{{proyecto.proyecto}}</li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script src="https://www.plexobuilding.com/plexo/js/jquery-3.4.1.min.js"></script>
+    <script src="https://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+
+    <!--Xeogl-->
+
+    <script src="https://www.plexobuilding.com/plexo/xeogl-master/build/xeogl.js"></script>
+    <script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/models/glTFModel.js"></script>
+    <script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/annotations/pin.js"></script>
+    <script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/annotations/annotation.js"></script>
+    <!--Pooperjs-->
+
+    <script defer src="https://www.plexobuilding.com/plexo/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script defer src="https://www.plexobuilding.com/plexo/js/bootstrap.js"></script>
+    <script defer src="https://www.plexobuilding.com/plexo/js/bootstrap.min.js"></script>
+
+    <script>
+        if(localStorage.getItem('carga')==null){
+            window.location.reload();
+        }
+        localStorage.setItem('carga','1');
+    </script>
+</body>
+
+
