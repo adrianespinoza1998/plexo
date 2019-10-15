@@ -133,6 +133,10 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     $scope.listaRecintos=recintos;
 
+    function cargarEstancia() {
+        var listaEstancia=[];
+    }
+
     var email=sessionService.getEmail();
     $scope.email=email;
 
@@ -300,10 +304,32 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     }
 
     $scope.crearRecinto=function () {
+        $scope.idEdificio=localStorage.getItem('id_edificio');
+
         if($scope.idEdificio!=''){
+            console.log($scope.idEdificio);
             recintoService.createRecinto($scope.idEdificio,$scope.nombreRecinto,$scope.numPiso);
         }else{
             alert('id edificio vacio');
         }
+    }
+    
+    $scope.cargarRecinto=function (id_edificio) {
+
+        var listaRecinto=[];
+
+        recintoService.listarRecinto(id_edificio,function (lista) {
+            for(var i=0;i<lista.length;i++){
+                listaRecinto.push(lista[i]);
+            }
+        })
+
+        $scope.listaRecintos=listaRecinto;
+
+        localStorage.setItem('id_edificio',id_edificio);
+
+        $scope.idEdificio=id_edificio;
+
+        console.log('Id edificio: '+$scope.idEdificio);
     }
 }]);

@@ -31,14 +31,7 @@
 
     <!--Wrap content-->
     <div id="contContenido" ng-class="{'maximizar': showSide}" class="container-fluid">
-        <div id="contFormulario" ng-include="linkOpcion">
-            <!--form>
-                <p>Seleccione el tipo de proyecto: <select class="form-control">
-                        <option ng-repeat="tipo in tiposProyectos">{{tipo}}</option>
-                    </select>
-                </p>
-            </form-->
-        </div>
+        <div id="contFormulario" ng-include="linkOpcion"></div>
     </div>
 </div>
 
@@ -46,17 +39,20 @@
 
 <nav id="sidebar" class="bg-secondary text-white border-secondary" ng-class="{'hidden': showSide}">
     <div class="bg-secondary dropdown container-fluid" style="position: relative; z-index: 0">
-        <div>
-            <ul>
-                <li class="btn btn-secondary" style="width: 50%" ng-click="home()">Home</li>
-                <li class="btn btn-secondary" style="width: 50%" ng-click="changeCrear()">Crear</li>
-                <ul ng-show="showCrear">
-                    <li class="btn btn-secondary" style="width: 45%" ng-click="empresa()">Empresa</li>
-                    <li class="btn btn-secondary" style="width: 45%;" ng-click="usuario()">Usuario</li>
-                    <li class="btn btn-secondary" style="width: 45%" ng-click="proyecto()">Proyecto</li>
+            <ul class="text-left">
+                <li class="btn btn-secondary mt-3" style="width: 85%" ng-click="home()">Home</li>
+                <li class="btn btn-secondary dropdown container-fluid" style="width: 85%" ng-click="changeCrear()">Crear</li>
+                <ul ng-show="showCrear" class="text-right">
+                    <li class="btn btn-secondary" style="width: 80%" ng-click="empresa()">Empresa</li>
+                    <li class="btn btn-secondary" style="width: 80%;" ng-click="usuario()">Usuario</li>
+                    <li class="btn btn-secondary" style="width: 80%" ng-click="proyecto()">Proyecto</li>
                 </ul>
+                <!--ul ng-class="{'show':showCrear}" class="text-right">
+                    <li class="btn btn-secondary" style="width: 80%" ng-click="empresa()">Empresa</li>
+                    <li class="btn btn-secondary" style="width: 80%" ng-click="usuario()">Usuario</li>
+                    <li class="btn btn-secondary" style="width: 80%" ng-click="proyecto()">Proyecto</li>
+                </ul-->
             </ul>
-        </div>
     </div>
 </nav>
 

@@ -12,7 +12,7 @@ app.factory("estanciaService",["$http",function ($http) {
                 if(response.data.error==null){
                     var listaEstancia=[];
 
-                    for(var i=0;i<response.data.length){
+                    for(var i=0;i<response.data.length;i++){
                         listaEstancia.push(response.data[i]);
                     }
 
@@ -21,7 +21,7 @@ app.factory("estanciaService",["$http",function ($http) {
                     console.log('Error: '+response.data.error);
                 }
             }, function errorCallback(response) {
-
+                console.log('Error al conectarse a la base de datos');
             });
         }
     }
