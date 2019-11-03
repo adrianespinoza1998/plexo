@@ -15,7 +15,6 @@ app.factory("edificioService",["$http",function ($http) {
 
                         for(var i=0;i<response.data.length;i++){
                             listaEdificios.push(response.data[i])
-                            console.log('edificio'+i+':'+listaEdificios[i]);
                         }
                         callback(listaEdificios);
                     }else{

@@ -1,4 +1,4 @@
-var app=angular.module("app",["ui.bootstrap","ngRoute","ui.mask"]);
+var app=angular.module("app",["ui.bootstrap","ngRoute","ui.mask","ngMaterial"]);
 app.config(["$routeProvider",function ($routeProvider) {
     $routeProvider
         .when('/',{
@@ -30,4 +30,15 @@ app.config(["$routeProvider",function ($routeProvider) {
             templateUrl:'html/home_admin.html',
             controller:'homeAdminCtrl'
         });
+}]);
+app.directive('fileInput',["$parse",function ($parse) {
+    return{
+        restrict:'A',
+        link:function (scope,elm,attrs) {
+            elm.bind('change',function () {
+                $parse(attrs.fileinput).assign(scope,elm[0].files);
+                scope.$apply();
+            });
+        }
+    }
 }]);

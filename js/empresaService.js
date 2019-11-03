@@ -14,7 +14,6 @@ app.factory("empresaService",["$http",function ($http) {
 
                     for(var i=0;i<response.data.length;i++){
                         listaEmpresas.push(response.data[i]);
-                        console.log(listaEmpresas[i]);
                     }
 
                     callback(listaEmpresas);

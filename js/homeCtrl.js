@@ -135,8 +135,8 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
         var ap_materno=sessionService.getApMaterno();
         $scope.ap_materno=ap_materno;
 
-        var contrasena=sessionService.getContrasena();
-        $scope.contrasena=contrasena;
+        //var contrasena=sessionService.getContrasena();
+        $scope.contrasena='';
 
         $scope.showSide=toggleService.hideNav;
         $scope.showProyectos=toggleService.hideProyectos;

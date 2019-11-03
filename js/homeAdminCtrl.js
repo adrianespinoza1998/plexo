@@ -1,7 +1,16 @@
 app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$location","$window","$uibModal",
-    "usuarioService","tipoProyectoService","empresaService","listaUsuarioService","edificioService","recintoService",
+    "usuarioService","tipoProyectoService","empresaService","listaUsuarioService","edificioService",
+    "recintoService","estanciaService","medicionService","archivoService","proyectoService",
     function ($scope, sessionService, toggleService, $location,$window,$uibModal,usuarioService,
-              tipoProyectoService,empresaService,listaUsuarioService,edificioService,recintoService) {
+              tipoProyectoService,empresaService,listaUsuarioService,edificioService,recintoService,
+              estanciaService,medicionService,archivoService,proyectoService) {
+
+    $scope.customer={};
+
+
+    //Mostrar estancias
+
+    $scope.numEstancias=1;
 
     $scope.linkOpcion="html/crear_empresa.html";
 
@@ -39,6 +48,7 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     $scope.rut='';
     $scope.id_empresa_usuario='';
     $scope.correo_usuario='';
+    $scope.validarContrasena='';
 
     //Datos edificio
     $scope.nombreEdificio='';
@@ -50,7 +60,18 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     $scope.nombreRecinto='';
     $scope.numPiso='';
 
-    var tiposProyectos=null;
+    //Datos estancia
+    $scope.idRecinto='';
+    $scope.nombreEstancia='';
+    $scope.ncaja='';
+
+    //Datos proyecto
+    $scope.idEmpresa='';
+    $scope.idTipoProyecto='';
+    $scope.nombreProyecto='';
+    $scope.direccionProyecto='';
+    $scope.idAdmin='';
+    $scope.idEstancia='';
 
     function cargarTiposProyectos(){
 
@@ -59,16 +80,16 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
         tipoProyectoService.getTipoProyecto(function (datos) {
             for(var i=0;i<datos.length;i++){
                 listaTiposProyectos.push(datos[i]);
+                if(i==0){
+                    $scope.idTipoProyecto=listaTiposProyectos[i].id_tipo_proyecto;
+                }
             }
         });
 
-        tiposProyectos=listaTiposProyectos;
+        return listaTiposProyectos;
     }
 
-    cargarTiposProyectos();
-    $scope.tiposProyectos=tiposProyectos;
-
-    var empresas=null;
+    $scope.tiposProyectos=cargarTiposProyectos();
 
     function cargarEmpresas(){
 
@@ -78,64 +99,91 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
             for(var i=0;i<listado.length;i++){
                 if(i==0){
                     localStorage.setItem('primera_empresa',listado[i].id_empresa);
+                    $scope.idEmpresa=localStorage.getItem('primera_empresa');
                     $scope.id_empresa_usuario=listado[i].id_empresa;
                 }
                 listadoEmpresas.push(listado[i]);
             }
         });
 
-        empresas=listadoEmpresas;
+        return listadoEmpresas;
     }
 
-    cargarEmpresas();
+    $scope.listaEmpresas=cargarEmpresas();
 
-    $scope.listaEmpresas=empresas;
-
-    var edificios=null;
-
-    function cargarEdificios(){
-        var listaEdificios=[];
+    function cargarEdificios() {
+        var listaEdificios = [];
 
         edificioService.listarEdificios(function (listadoEdificio) {
-            for(var i=0;i<listadoEdificio.length;i++){
+            for (var i = 0; i < listadoEdificio.length; i++) {
                 listaEdificios.push(listadoEdificio[i]);
-                console.log(listaEdificios[i].nombre_edificio);
-                if(i==0){
-                    localStorage.setItem('id_edificio',listadoEdificio[i].id_edificio);
+                if (i == 0) {
+                    //localStorage.setItem('id_edificio',listadoEdificio[i].id_edificio);
+                    $window.localStorage.setItem("id_edificio", listadoEdificio[i].id_edificio);
                 }
             }
         });
 
-        edificios=listaEdificios;
+        return listaEdificios;
     }
 
-    cargarEdificios();
+    $scope.listaEdificio=cargarEdificios();
 
-    $scope.listaEdificio=edificios;
+    $scope.idEdificio=$window.localStorage.getItem('id_edificio');
 
-    $scope.idEdificio=localStorage.getItem('id_edificio');
-    
-    var recintos=null;
-    
-    function cargarRecintos() {
+    function cargarRecintos(id_edificio) {
         var listaRecinto=[];
 
-        recintoService.listarRecinto($scope.idEdificio,function (lista) {
+        recintoService.listarRecinto(id_edificio,function (lista) {
             for(var i=0;i<lista.length;i++){
                 listaRecinto.push(lista[i]);
+                if(i==0){
+                    localStorage.setItem('id_recinto',listaRecinto[i].id_recinto);
+                    $scope.idRecinto=localStorage.getItem('id_recinto');
+                }
             }
         });
 
-        recintos=listaRecinto;
+        return listaRecinto;
     }
 
-    cargarRecintos();
+    $scope.listaRecintos=cargarRecintos($scope.idEdificio);
 
-    $scope.listaRecintos=recintos;
-
-    function cargarEstancia() {
+    function cargarEstancias(id_recinto) {
         var listaEstancia=[];
+
+        estanciaService.listarEstancia(id_recinto,function (lista) {
+            for (var i=0;i<lista.length;i++){
+                listaEstancia.push(lista[i]);
+                if(i==0){
+                    $scope.idEstancia=listaEstancia[i].id_estancia;
+                }
+            }
+        });
+
+        return listaEstancia;
     }
+
+    estancias=cargarEstancias(localStorage.getItem('id_recinto'));
+
+    function cargarCajas(){
+        var listaCajas=[];
+
+        medicionService.listarCaja(function (lista) {
+            for(var i=0;i<lista.length;i++){
+                listaCajas.push(lista[i]);
+                if(i==0){
+                    $scope.ncaja=listaCajas[i].id_slab_caja;
+                }
+            }
+        });
+
+        return listaCajas;
+    }
+
+    $scope.listaCajas=cargarCajas();
+
+    $scope.listaEstancias=estancias;
 
     var email=sessionService.getEmail();
     $scope.email=email;
@@ -149,8 +197,7 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     var ap_materno=sessionService.getApMaterno();
     $scope.ap_materno=ap_materno;
 
-    var contrasena=sessionService.getContrasena();
-    $scope.contrasena=contrasena;
+    $scope.contrasena='';
 
     $scope.showSide=toggleService.hideNav;
     $scope.showProyectos=toggleService.hideProyectos;
@@ -168,13 +215,21 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     $scope.editarDatos=function () {
         var modal=$uibModal.open({
-            templateUrl:'http://www.plexobuilding.com/plexo/html/actualizar_usuario.html'
+            templateUrl:'https://www.plexobuilding.com/plexo/html/actualizar_usuario.html'
         });
     };
 
     $scope.modificar=function () {
-        usuarioService.updateUsuario(sessionService.getId(),$scope.email,$scope.contrasena,$scope.nombre,
-            $scope.ap_paterno,$scope.ap_materno);
+        if($scope.email!='' && $scope.contrasena!='' && $scope.nombre!='' && $scope.ap_paterno!='' && $scope.ap_materno!=''){
+            if($scope.contrasena==$scope.validarContrasena){
+                usuarioService.updateUsuario(sessionService.getId(),$scope.email,$scope.contrasena,$scope.nombre,
+                    $scope.ap_paterno,$scope.ap_materno);
+            }else{
+                alert('Las contraseñas no coinciden');
+            }
+        }else{
+            alert('Uno o más campos vacios');
+        }
     };
 
     $scope.home=function () {
@@ -186,12 +241,12 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     function getAdmin(){
         var listaAdmin=[];
 
-        console.log(localStorage.getItem("primera_empresa"));
-
         listaUsuarioService.getListaUsuario(localStorage.getItem("primera_empresa"),function (listado) {
             for(var i=0;i<listado.length;i++){
                 listaAdmin.push(listado[i]);
-                console.log(listaAdmin[i]);
+                if(i==0){
+                    $scope.idAdmin=listaAdmin[i].id_usuario;
+                }
             }
         });
 
@@ -201,14 +256,13 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     getAdmin();
 
     $scope.admin=function (id_empresa) {
-        var listadoUsuario=[];
+        $scope.idEmpresa=id_empresa;
 
-        console.log(id_empresa);
+        var listadoUsuario=[];
 
         listaUsuarioService.getListaUsuario(id_empresa,function (listado) {
             for(var i=0;i<listado.length;i++){
                 listadoUsuario.push(listado[i]);
-                console.log(listadoUsuario[i]);
             }
         });
 
@@ -299,15 +353,20 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
         });
     }
 
+    $scope.ventanaEstancia=function () {
+        $uibModal.open({
+            templateUrl:'https://www.plexobuilding.com/plexo/html/estancia.html'
+        });
+    }
+
     $scope.getIdEdificio=function(id_edificio){
         $scope.idEdificio=id_edificio;
     }
 
     $scope.crearRecinto=function () {
-        $scope.idEdificio=localStorage.getItem('id_edificio');
+        $scope.idEdificio=$window.localStorage.getItem('id_edificio');
 
         if($scope.idEdificio!=''){
-            console.log($scope.idEdificio);
             recintoService.createRecinto($scope.idEdificio,$scope.nombreRecinto,$scope.numPiso);
         }else{
             alert('id edificio vacio');
@@ -316,20 +375,82 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     
     $scope.cargarRecinto=function (id_edificio) {
 
-        var listaRecinto=[];
+        $scope.listaRecintos=cargarRecintos(id_edificio);
 
-        recintoService.listarRecinto(id_edificio,function (lista) {
-            for(var i=0;i<lista.length;i++){
-                listaRecinto.push(lista[i]);
-            }
-        })
-
-        $scope.listaRecintos=listaRecinto;
-
-        localStorage.setItem('id_edificio',id_edificio);
-
+        for(var i=0;i<$scope.listaRecintos.length;i++){
+            console.log(i+':'+$scope.listaRecintos[i]);        
+        }
+        $scope.listaEstancias=cargarEstancias($scope.listaRecintos[0].id_recinto);
+        $window.localStorage.removeItem('id_edificio');
+        $window.localStorage.setItem('id_edificio',id_edificio);
         $scope.idEdificio=id_edificio;
+    }
 
-        console.log('Id edificio: '+$scope.idEdificio);
+    $scope.cargarEstancia=function (id_recinto) {
+        $scope.listaEstancias=cargarEstancias(id_recinto);
+    }
+
+    $scope.crearEstancia=function () {
+        var validar=false;
+
+        $scope.$watch('nombreEstancia',function (newValue, oldValue) {
+            if(newValue.length>1){
+                validar=true;
+                console.log(newValue);
+            }
+        });
+        var codigoEstancias=document.getElementById('estancias').innerHTML;
+
+        var estancias='';
+
+        $scope.numEstancias++;
+
+        for(var i=0;i<$scope.numEstancias;i++){
+            estancias=estancias+codigoEstancias;
+        }
+
+        var modificacion=document.getElementById('estancias').innerHTML=estancias;
+
+        if($scope.nombreEstancia!='' && $scope.idRecinto!='' && $scope.ncaja!='' && validar!=false){
+            estanciaService.crearEstancia($scope.idRecinto,$scope.nombreRecinto,$scope.ncaja);
+        }else {
+            alert('Uno o más campos vacios');
+        }
+    }
+
+    $scope.cargarCajas=function (id_cajas) {
+        $scope.ncaja=id_cajas;
+    }
+
+    $scope.crearProyecto=function () {
+        if(document.getElementById('file').files[0]!=null && $scope.idEmpresa!='' && $scope.idTipoProyecto!=''
+            && $scope.nombreProyecto!='' && $scope.direccionProyecto!='' && $scope.idAdmin!='' && $scope.idEdificio!=''
+            && $scope.idRecinto!='' && $scope.idEstancia!=''){
+
+            var fd = new FormData();
+            var files = document.getElementById('file').files[0];
+            fd.append('file',files);
+
+            var link='https://www.plexobuilding.com/plexo/webservices/upload'+files.name;
+
+            archivoService.uploadArchivo(fd);
+
+            proyectoService.crearProyecto($scope.idTipoProyecto,$scope.idEmpresa,$scope.idAdmin,$scope.nombreProyecto,
+                $scope.direccionProyecto,link,$scope.idEdificio);
+        }else{
+            alert('Uno o más campos vacios');
+        }
+    }
+
+    $scope.tipoProyecto=function (id_tipo) {
+        $scope.idTipoProyecto=id_tipo;
+    }
+
+    $scope.setAdmin=function (id) {
+        $scope.idAdmin=id;
+    }
+
+    $scope.setEstancia=function (id) {
+        $scope.idEstancia=id;
     }
 }]);

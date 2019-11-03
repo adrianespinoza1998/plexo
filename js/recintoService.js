@@ -32,7 +32,6 @@ app.factory("recintoService",["$http",function ($http) {
 
                     for(var i=0;i<response.data.length;i++){
                         listaRecinto.push(response.data[i]);
-                        console.log(listaRecinto[i]);
                     }
 
                     callback(listaRecinto);

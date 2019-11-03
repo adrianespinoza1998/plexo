@@ -12,7 +12,7 @@ app.factory("usuarioService",["$http","sessionService",function ($http,sessionSe
             }).then(function successCallback(response) {
                 if(response.data.error='ninguno'){
                     sessionService.setEmail(response.data.correo);
-                    sessionService.setContrasena(response.data.contrasena);
+                    //sessionService.setContrasena(response.data.contrasena);
                     sessionService.setNombre(response.data.nombre);
                     sessionService.setApPaterno(response.data.ap_paterno);
                     sessionService.setApMaterno(response.data.ap_materno);

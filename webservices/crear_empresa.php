@@ -6,17 +6,6 @@ include "conexion.php";
 
 if(isset($_POST['nombre_empresa']) && isset($_POST['direccion']) && isset($_POST['telefono'])){
 
-    /*if($_POST['telefono']==null){
-
-        $nombre_empresa=$_POST['nombre_empresa'];
-        $direccion=$_POST['direccion'];
-
-        $query="INSERT INTO empresa(nombre_empresa,direccion) VALUES('".$nombre_empresa."','".$direccion."')";
-
-    }else{
-
-    }*/
-
     $nombre_empresa=$_POST['nombre_empresa'];
     $direccion=$_POST['direccion'];
     $telefono=$_POST['telefono'];

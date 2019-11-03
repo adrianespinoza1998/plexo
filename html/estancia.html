@@ -1,0 +1,30 @@
+<div ng-controller="homeAdminCtrl">
+    <form class="card">
+        <div class="card-header">
+            <p>Crear estancia</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <p>Nombre estancia: </p>
+                </div>
+                <div class="col-md-7">
+                    <input type="text" class="form-control" ng-model="nombreEstancia">
+                </div>
+                <div class="col-md-5">
+                    <p>Caja: </p>
+                </div>
+                <div class="col-md-7">
+                    <select class="form-control">
+                        <option ng-repeat="caja in listaCajas" ng-click="cargarCajas(caja.id_slab_caja)">
+                            {{caja.descripcion+', '+caja.nombre}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-12 text-center mt-3">
+                    <input type="submit" value="Guardar" class="btn btn-secondary" ng-click="crearEstancia()">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

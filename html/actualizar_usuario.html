@@ -1,16 +1,51 @@
-<link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/homestyle.css">
+<!--link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/homestyle.css"-->
 <div ng-app="app">
     <div ng-controller="homeCtrl">
         <form class="card">
-            <h1 class="display-4 card-header text-center">Datos del usuario</h1>
-            <div class="card-body justify-content-center">
-                <p>Nombre: <input type="text" class="form-control" ng-model="nombre"></p>
-                <p>Apellido paterno: <input type="text" class="form-control" ng-model="ap_paterno"></p>
-                <p>Apellido materno: <input type="text" class="form-control" ng-model="ap_materno"></p>
-                <p>Email: <input type="email"class="form-control" ng-model="email"></p>
-                <p>Contraseña: <input type="password" class="form-control" ng-model="contrasena"></p>
-                <div class="text-center">
-                    <input id="btnModificar" type="submit" class="btn btn-dark align-middle" value="Modificar" ng-click="modificar()">
+            <div class="card-header">
+                <h1 class="display-4 text-center">Datos del usuario</h1>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>Nombre: </p>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" ng-model="nombre">
+                    </div>
+                    <div class="col-md-4">
+                        <p>Apellido paterno: </p>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" ng-model="ap_paterno">
+                    </div>
+                    <div class="col-md-4">
+                        <p>Apellido materno: </p>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" ng-model="ap_materno">
+                    </div>
+                    <div class="col-md-4">
+                        <p>Email: </p>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="email"class="form-control" ng-model="email">
+                    </div>
+                    <div class="col-md-4">
+                        <p>Nueva contraseña: </p>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="password" class="form-control" ng-model="contrasena">
+                    </div>
+                    <div class="col-md-4">
+                        <p>Repita contraseña: </p>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="password" class="form-control" ng-model="validarContrasena">
+                    </div>
+                    <div class="text-center col-md-12 mt-3">
+                        <input id="btnModificar" type="submit" class="btn btn-dark align-middle" value="Modificar" ng-click="modificar()">
+                    </div>
                 </div>
             </div>
         </form>

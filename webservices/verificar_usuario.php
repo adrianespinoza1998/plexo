@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 
 include "conexion.php";
 
-if(isset($_POST['correo']) || isset($_POST['contrasena'])){
+if(isset($_POST['correo']) && isset($_POST['contrasena'])){
 
     $correo=$_POST['correo'];
 

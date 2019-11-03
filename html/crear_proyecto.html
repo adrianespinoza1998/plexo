@@ -1,10 +1,11 @@
+<link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/opcionstyle.css">
 <div ng-controller="homeAdminCtrl">
-    <form class="card">
+    <div class="card" id="contenedor">
         <div class="card-header">
             <p>Crear proyecto</p>
         </div>
         <div class="card-body">
-            <div class="row">
+            <form class="row">
                 <div class="col-md-4 col-lg-5">
                     <p>*Empresa: </p>
                 </div>
@@ -20,7 +21,7 @@
                 </div>
                 <div class="col-md-8 col-lg-7">
                     <select class="form-control">
-                        <option ng-repeat="tipo in tiposProyectos">
+                        <option ng-repeat="tipo in tiposProyectos" ng-click="tipoProyecto(tipo.id_tipo_proyecto)">
                             {{tipo.nombre_tipo_proyecto}}
                         </option>
                     </select>
@@ -29,20 +30,20 @@
                     <p>*Nombre: </p>
                 </div>
                 <div class="col-md-8 col-lg-7">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-model="nombreProyecto">
                 </div>
                 <div class="col-md-4 col-lg-5">
                     <p>*Dirección: </p>
                 </div>
                 <div class="col-md-8 col-lg-7">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-model="direccionProyecto">
                 </div>
                 <div class="col-md-4 col-lg-5">
                     <p>Administrador del proyecto: </p>
                 </div>
                 <div class="col-md-8 col-lg-7">
                     <select class="form-control">
-                        <option ng-repeat="usuario in listaUsuarios">
+                        <option ng-repeat="usuario in listaUsuarios" ng-click="setAdmin(usuario.id_usuario)">
                         {{usuario.nombre+' '+usuario.ap_paterno}}
                         </option>
                     </select>
@@ -71,7 +72,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <select class="form-control">
-                                <option ng-repeat="recinto in listaRecintos">
+                                <option ng-repeat="recinto in listaRecintos" ng-click="cargarEstancia(recinto.id_recinto)">
                                     {{recinto.nombre_recinto}}
                                 </option>
                             </select>
@@ -86,13 +87,15 @@
                 </div>
                 <div class="col-md-8 col-lg-7">
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-md-10" id="estancias">
                             <select class="form-control">
-                                <option>Estancia 1</option>
+                                <option ng-repeat="estancia in listaEstancias" ng-click="setEstancia(estancia.id_estancia)">
+                                    {{estancia.nombre_estancia}}
+                                </option>
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-secondary">+</button>
+                            <button class="btn btn-secondary" ng-click="ventanaEstancia()">+</button>
                         </div>
                     </div>
                 </div>
@@ -100,12 +103,13 @@
                     <p>Subir proyecto: </p>
                 </div>
                 <div class="col-md-8 col-lg-7">
-                    <button class="btn btn-secondary">Examinar equipo</button>
+                    <input type="file" id="file" name="file" class="form-control" file-models="customer.file">
                 </div>
                 <div class="col-md-12 text-center mt-3">
-                    <input type="submit" class="btn btn-secondary">
+                    <input type="submit" class="btn btn-secondary" value="Guardar" ng-click="crearProyecto()">
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
+<script src="https://www.plexobuilding.com/plexo/js/homeAdminCtrl.js"></script>

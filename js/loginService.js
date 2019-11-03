@@ -24,7 +24,7 @@ app.factory("loginService",["$http","$location","sessionService","toggleService"
                     sessionService.setSesion(sesion);
                     sessionService.setEmail(correo);
                     sessionService.setId(id);
-                    sessionService.setContrasena(password);
+                    //sessionService.setContrasena(password);
                     sessionService.setNombre(nombre);
                     sessionService.setApPaterno(ap_paterno);
                     sessionService.setApMaterno(ap_materno);

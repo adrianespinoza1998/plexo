@@ -21,12 +21,12 @@ app.factory("sessionService",["$window",function ($window) {
         setId:function (value) {
             return $window.sessionStorage.setItem("id",value);
         },
-        getContrasena:function () {
+        /*getContrasena:function () {
             return $window.sessionStorage.getItem("contrasena");
         },
         setContrasena:function (value) {
             return $window.sessionStorage.setItem("contrasena",value);
-        },
+        },*/
         getNombre:function () {
             return $window.sessionStorage.getItem("nombre");
         },
