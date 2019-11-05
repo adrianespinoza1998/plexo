@@ -1,6 +1,8 @@
 app.controller("loginCtrl",["$scope","loginService","$uibModal",
     function ($scope, loginService,$uibModal) {
 
+    $scope.isChecked=false;
+
     $scope.mail="";
     $scope.pass="";
 

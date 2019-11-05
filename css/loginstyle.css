@@ -3,7 +3,6 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #60a3bc !important;
 }
 
 #contLogin{
@@ -11,7 +10,7 @@ html {
 }
 
 .user_card {
-    height: 400px;
+    height: 430px;
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;
@@ -78,3 +77,9 @@ html {
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #428bca !important;
 }
+
+.control{
+    color: #FFFFFF;
+    //background-color: #ffffff;
+}
+

@@ -88,9 +88,9 @@
                 <div class="col-md-8 col-lg-7">
                     <div class="row">
                         <div class="col-md-10" id="estancias">
-                            <select class="form-control">
+                            <select class="form-control estancia">
                                 <option ng-repeat="estancia in listaEstancias" ng-click="setEstancia(estancia.id_estancia)">
-                                    {{estancia.nombre_estancia}}
+                                    {{$scope.estancia.push(estancia); estancia.nombre_estancia}}
                                 </option>
                             </select>
                         </div>

@@ -7,7 +7,6 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     $scope.customer={};
 
-
     //Mostrar estancias
 
     $scope.numEstancias=1;
@@ -71,6 +70,7 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     $scope.nombreProyecto='';
     $scope.direccionProyecto='';
     $scope.idAdmin='';
+    $scope.estancia=[];
     $scope.idEstancia='';
 
     function cargarTiposProyectos(){
@@ -153,10 +153,12 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
         var listaEstancia=[];
 
         estanciaService.listarEstancia(id_recinto,function (lista) {
-            for (var i=0;i<lista.length;i++){
-                listaEstancia.push(lista[i]);
-                if(i==0){
-                    $scope.idEstancia=listaEstancia[i].id_estancia;
+            if(lista.length>0){
+                for (var i=0;i<lista.length;i++){
+                    listaEstancia.push(lista[i]);
+                    if(i==0){
+                        $scope.idEstancia=listaEstancia[i].id_estancia;
+                    }
                 }
             }
         });
@@ -181,6 +183,12 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
         return listaCajas;
     }
 
+    function limpiarDatos(listaEdificio,listaRecinto,listaEstancia){
+        listaEdificio=[];
+        listaRecinto=[];
+        listaEstancia=[];
+    }
+
     $scope.listaCajas=cargarCajas();
 
     $scope.listaEstancias=estancias;
@@ -199,6 +207,8 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     $scope.contrasena='';
 
+
+    //Barra lateral
     $scope.showSide=toggleService.hideNav;
     $scope.showProyectos=toggleService.hideProyectos;
 
@@ -219,6 +229,7 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
         });
     };
 
+    //Modificar usuario
     $scope.modificar=function () {
         if($scope.email!='' && $scope.contrasena!='' && $scope.nombre!='' && $scope.ap_paterno!='' && $scope.ap_materno!=''){
             if($scope.contrasena==$scope.validarContrasena){
@@ -232,12 +243,14 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
         }
     };
 
+    //Devuelve a la pantalla de inicio
     $scope.home=function () {
         $location.path('/home');
     }
 
     var usuarios=null;
 
+    //Carga administradores de proyectos
     function getAdmin(){
         var listaAdmin=[];
 
@@ -255,6 +268,7 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     getAdmin();
 
+    //Obtiene el administrador de proyecto
     $scope.admin=function (id_empresa) {
         $scope.idEmpresa=id_empresa;
 
@@ -327,10 +341,7 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
         }
     }
 
-    $scope.prueba=function (mensaje) {
-        console.log(mensaje);
-    }
-
+    //Muestra ventana para crear edificio
     $scope.ventanaEdificio=function () {
         $uibModal.open({
             templateUrl:'https://www.plexobuilding.com/plexo/html/edificio.html'
@@ -374,16 +385,16 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     }
     
     $scope.cargarRecinto=function (id_edificio) {
+        $scope.idEdificio=id_edificio;
 
         $scope.listaRecintos=cargarRecintos(id_edificio);
 
-        for(var i=0;i<$scope.listaRecintos.length;i++){
-            console.log(i+':'+$scope.listaRecintos[i]);        
-        }
-        $scope.listaEstancias=cargarEstancias($scope.listaRecintos[0].id_recinto);
+        $scope.listaEstancias=cargarEstancias($scope.idRecinto);
+
         $window.localStorage.removeItem('id_edificio');
         $window.localStorage.setItem('id_edificio',id_edificio);
-        $scope.idEdificio=id_edificio;
+
+        limpiarDatos($scope.listaEdificio,$scope.listaRecintos,$scope.listaEstancias);
     }
 
     $scope.cargarEstancia=function (id_recinto) {
@@ -391,28 +402,24 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     }
 
     $scope.crearEstancia=function () {
-        var validar=false;
+        if($scope.nombreEstancia!='' && $scope.idRecinto!='' && $scope.ncaja!=''){
+            var codigoEstancias=document.getElementById('estancias').innerHTML;
 
-        $scope.$watch('nombreEstancia',function (newValue, oldValue) {
-            if(newValue.length>1){
-                validar=true;
-                console.log(newValue);
+            var estancias='';
+
+            $scope.numEstancias++;
+
+            for(var i=0;i<$scope.numEstancias;i++){
+                estancias=estancias+codigoEstancias;
             }
-        });
-        var codigoEstancias=document.getElementById('estancias').innerHTML;
 
-        var estancias='';
+            $scope.numEstancias++;
 
-        $scope.numEstancias++;
+            estanciaService.crearEstancia($scope.idRecinto,$scope.nombreEstancia,$scope.ncaja);
 
-        for(var i=0;i<$scope.numEstancias;i++){
-            estancias=estancias+codigoEstancias;
-        }
+            cargarEstancias($scope.idRecinto);
+            var modificacion=document.getElementById('estancias').innerHTML=estancias;
 
-        var modificacion=document.getElementById('estancias').innerHTML=estancias;
-
-        if($scope.nombreEstancia!='' && $scope.idRecinto!='' && $scope.ncaja!='' && validar!=false){
-            estanciaService.crearEstancia($scope.idRecinto,$scope.nombreRecinto,$scope.ncaja);
         }else {
             alert('Uno o más campos vacios');
         }
@@ -431,12 +438,33 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
             var files = document.getElementById('file').files[0];
             fd.append('file',files);
 
-            var link='https://www.plexobuilding.com/plexo/webservices/upload'+files.name;
+            var link='https://www.plexobuilding.com/plexo/webservices/upload/'+files.name;
 
-            archivoService.uploadArchivo(fd);
+            var extension='';
 
-            proyectoService.crearProyecto($scope.idTipoProyecto,$scope.idEmpresa,$scope.idAdmin,$scope.nombreProyecto,
-                $scope.direccionProyecto,link,$scope.idEdificio);
+            for(var i=0;i<files.name.length;i++){
+                if(files.name.substring(i,i+1)=='.'){
+                    extension=files.name.substring(i,files.name.length);
+                }
+            }
+
+            if(extension=='.html'){
+                if(archivoService.uploadArchivo(fd)){
+                    console.log('Funcionando');
+                }else{
+                    console.log('No funciona');
+                }
+
+                proyectoService.crearProyecto($scope.idTipoProyecto,$scope.idEmpresa,$scope.idAdmin,$scope.nombreProyecto,
+                    $scope.direccionProyecto,link,$scope.idEdificio);
+
+                for(var i=0;i<$scope.estancia.length;i++){
+                    console.log($scope.estancia[i]);
+                }
+
+            }else{
+                alert('Tipo de archivo incorrecto, no es un documento html');
+            }
         }else{
             alert('Uno o más campos vacios');
         }

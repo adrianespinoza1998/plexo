@@ -2,7 +2,7 @@ app.factory("medicionService",["$http","guardarMedicionService",function ($http,
     return{
         getMedicion:function (ncaja) {
             $http({
-                url:'https://52.201.131.104/api/get_datos.php',
+                url:'https://www.bimplexus.com/api/get_datos.php',
                 method:'POST',
                 headers:{
                     'Content-Type':'application/x-www-form-urlencoded'
