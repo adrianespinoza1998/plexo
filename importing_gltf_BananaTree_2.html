@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en">
 <head>
     <title>xeogl Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <script src="https://www.plexobuilding.com/plexo/js/angular.js"></script>
 
     <link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/proyectostyle.css">
     <link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/bootstrap.css">
@@ -17,7 +18,7 @@
 
     <link href="https://www.plexobuilding.com/plexo/xeogl-master/examples/css/styles.css" rel="stylesheet"/>
 
-<body ng-controller="homeCtrl">
+<body>
 
 <script>
     var cargarDatos=setInterval(actualizarDatos,5000);
@@ -174,5 +175,23 @@ model.on("loaded", function () {
         }
     }
 </script>
+<script src="https://www.plexobuilding.com/plexo/js/homeCtrl.js"></script>
+<div id="probar">
+    <!--script>
+        boxMesh=new xeogl.Mesh({
+            geometry: new xeogl.BoxGeometry({
+                center:[0,0,0],
+                xSize:1,
+                ySize:1,
+                zSize:1
+            }),
+            material: new xeogl.PhongMaterial({
+                diffuseMap: new xeogl.Texture({
+                    src: 'xeogl-master/examples/textures/diffuse/uvGrid2.jpg'
+                })
+            })
+        });
+    </script-->
+</div>
 </body>
 </html>

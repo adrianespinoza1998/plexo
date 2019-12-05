@@ -1,9 +1,9 @@
 app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$location","$window","$uibModal",
     "usuarioService","tipoProyectoService","empresaService","listaUsuarioService","edificioService",
-    "recintoService","estanciaService","medicionService","archivoService","proyectoService",
+    "recintoService","estanciaService","medicionService","archivoService","proyectoService","guardarIdProyecto",
     function ($scope, sessionService, toggleService, $location,$window,$uibModal,usuarioService,
               tipoProyectoService,empresaService,listaUsuarioService,edificioService,recintoService,
-              estanciaService,medicionService,archivoService,proyectoService) {
+              estanciaService,medicionService,archivoService,proyectoService,guardarIdProyecto) {
 
     $scope.customer={};
 
@@ -403,7 +403,7 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     $scope.crearEstancia=function () {
         if($scope.nombreEstancia!='' && $scope.idRecinto!='' && $scope.ncaja!=''){
-            var codigoEstancias=document.getElementById('estancias').innerHTML;
+            /*var codigoEstancias=document.getElementById('estancias').innerHTML;
 
             var estancias='';
 
@@ -413,12 +413,12 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
                 estancias=estancias+codigoEstancias;
             }
 
-            $scope.numEstancias++;
+            $scope.numEstancias++;*/
 
             estanciaService.crearEstancia($scope.idRecinto,$scope.nombreEstancia,$scope.ncaja);
 
             cargarEstancias($scope.idRecinto);
-            var modificacion=document.getElementById('estancias').innerHTML=estancias;
+            //var modificacion=document.getElementById('estancias').innerHTML=estancias;
 
         }else {
             alert('Uno o más campos vacios');
@@ -448,15 +448,27 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
                 }
             }
 
-            if(extension=='.html'){
-                if(archivoService.uploadArchivo(fd)){
-                    console.log('Funcionando');
-                }else{
-                    console.log('No funciona');
-                }
+            if(extension=='.html') {
 
-                proyectoService.crearProyecto($scope.idTipoProyecto,$scope.idEmpresa,$scope.idAdmin,$scope.nombreProyecto,
-                    $scope.direccionProyecto,link,$scope.idEdificio);
+                archivoService.uploadArchivo(fd);
+
+                proyectoService.crearProyecto($scope.idTipoProyecto, $scope.idEmpresa, $scope.idAdmin, $scope.nombreProyecto,
+                    $scope.direccionProyecto, link, $scope.idEdificio);
+
+                proyectoService.getMaxIdProyecto(function (id) {
+                    console.log(id);
+
+                    proyectoService.addPermiso(id,$scope.idAdmin,$scope.idAdmin);
+                    recintoService.indexarRecinto($scope.idRecinto,id);
+                });
+
+                /*if(id_proyecto<0){
+                    proyectoService.addPermiso(localStorage.getItem('id_proyecto'), $scope.idAdmin, $scope.idAdmin);
+
+                    recintoService.indexarRecinto($scope.idRecinto,localStorage.getItem('id_proyecto'));
+                }else{
+                    alert('Error al guardar id proyecto');
+                }*/
 
                 for(var i=0;i<$scope.estancia.length;i++){
                     console.log($scope.estancia[i]);

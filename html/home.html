@@ -17,6 +17,12 @@
             </div>
             <div class="col-md-5">
                 <div class="float-right">
+                    <button title="Crear estancia" class="btn btn-light text-secondary">
+                        <a class="fa fa-square"></a>
+                    </button>
+                    <button title="Definir estancia" class="btn btn-light text-secondary" ng-click="crearEstancia()">
+                        <a class="fa fa-cube"></a>
+                    </button>
                     <button title="Elemento" class="btn btn-light text-secondary" ng-click="verElemento()" style="display: inline-block">
                         <a class="fa fa-plus"></a>
                     </button>
@@ -24,7 +30,7 @@
                         <a class="fa fa-plus"></a>
                     </button>
                     <button title="Mantención" class="btn btn-light text-secondary" ng-click="verMantencion()" style="display: inline-block"><a class="fa fa-cog"></a></button>
-                    <div class="dropdown" style="display: inline-block">
+                    <div class="dropdown hola" style="display: inline-block">
                         <button type="button" class="text-secondary btn btn-light dropdown-toggle" data-toggle="dropdown">
                             <a class="fa fa-user align-middle" style="font-size: 200%"></a><a>      </a><a class="text-center">{{email}}</a></button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -68,10 +74,7 @@
                     </ul>
                 </ul-->
                 <ul ng-repeat="proyecto in listaProyecto">
-                    <li style="cursor:pointer;" ng-click="toggleProyecto()">{{proyecto.edificio}}</li>
-                    <ul ng-show="showProyecto" ng-repeat="proyecto in proyecto.nodes">
-                        <li style="cursor: pointer">{{proyecto.proyecto}}</li>
-                    </ul>
+                    <li style="cursor:pointer;" ng-click="toggleProyecto()">{{proyecto.nombre_proyecto}}</li>
                 </ul>
             </div>
         </div>
@@ -86,12 +89,16 @@
     <script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/models/glTFModel.js"></script>
     <script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/annotations/pin.js"></script>
     <script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/annotations/annotation.js"></script>
+
     <!--Pooperjs-->
 
     <script defer src="https://www.plexobuilding.com/plexo/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script defer src="https://www.plexobuilding.com/plexo/js/bootstrap.js"></script>
     <script defer src="https://www.plexobuilding.com/plexo/js/bootstrap.min.js"></script>
+
+    <!--Home-->
+    <script src="https://www.plexobuilding.com/plexo/js/homeCtrl.js"></script>
 
     <script>
         if(localStorage.getItem('carga')==null){

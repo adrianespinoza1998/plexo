@@ -26,7 +26,7 @@ if(isset($_POST['nombre']) && isset($_POST['ap_paterno']) && isset($_POST['ap_ma
 
     //Crear contraseña
     $password=strtolower(substr($nombre,0,1).$ap_paterno);
-    $contrasena=password_hash(substr($nombre,0,1).$ap_paterno,PASSWORD_BCRYPT,['cost'=>12]);
+    $contrasena=password_hash($password,PASSWORD_BCRYPT,['cost'=>12]);
 
     $query="INSERT INTO usuario VALUES(0,2,".$id_empresa.",'".$correo."','".$contrasena."','".$rut."','".$nombre."','".$ap_paterno."','".$ap_materno."')";
 

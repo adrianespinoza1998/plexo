@@ -12,11 +12,23 @@ if(isset($_POST['correo']) && isset($_POST['contrasena'])){
 
     $salida=array();
 
-    $queryPassword="SELECT contrasena FROM usuario WHERE correo='".$correo."'";
-    $execQueryPassword=$conexion->query($queryPassword);
+    $query="SELECT * FROM usuario WHERE correo='".$correo."'";
+    $execQuery=$conexion->query($query);
 
-    if($execQueryPassword->num_rows>0){
-        $cryptPassword=$execQueryPassword->fetch_assoc();
+    if($execQuery->num_rows>0){
+
+        $row=$execQuery->fetch_assoc();
+
+        if(password_verify($contrasena,$row['contrasena'])) {
+            $salida['estado']='logueado';
+            $salida['correo']=$row['correo'];
+            $salida['id_perfil']=$row['id_perfil'];
+            $salida['id_usuario']=$row['id_usuario'];
+            $salida['nombre']=$row['nombre'];
+            $salida['ap_paterno']=$row['ap_paterno'];
+            $salida['ap_materno']=$row['ap_materno'];
+        }
+        /*$cryptPassword=$execQueryPassword->fetch_assoc();
 
         if(password_verify($contrasena,$cryptPassword['contrasena'])){
 
@@ -44,7 +56,7 @@ if(isset($_POST['correo']) && isset($_POST['contrasena'])){
         }else{
             $salida['estado']='deslogueado';
             $salida['error']='contraseña incorrecta';
-        }
+        }*/
     }else{
         $salida['estado']='deslogueado';
         $salida['error']='correo no existe';

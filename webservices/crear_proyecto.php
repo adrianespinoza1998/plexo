@@ -19,11 +19,15 @@ if(isset($_POST['id_tipo_proyecto']) && isset($_POST['id_empresa']) && isset($_P
     $query="INSERT INTO proyectos VALUES(0,".$id_tipo_proyecto.",".$id_empresa.",".$id_administrador.",'".$nombre_proyecto.
         "','".$direccion."','".$link_proyecto."',".$id_edificio.")";
 
-    if($conexion->query($query)==true){
-        $salida['estado']='proyecto creado';
+    $ejecutarQuery=$conexion->query($query);
+
+    if($ejecutarQuery==true){
+
+        $salida['estado']='Proyecto creado';
         echo json_encode($salida);
+
     }else{
-        $salida['error']='query incorrecta';
+        $salida['error']='error al insertar proyecto en bd';
         echo json_encode($salida);
     }
 
@@ -31,4 +35,5 @@ if(isset($_POST['id_tipo_proyecto']) && isset($_POST['id_empresa']) && isset($_P
     $salida['error']='uno o mas datos vacios';
     echo json_encode($salida);
 }
+$conexion->close();
 ?>

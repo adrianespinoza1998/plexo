@@ -39,6 +39,24 @@ app.factory("recintoService",["$http",function ($http) {
             }, function errorCallback(response) {
                 alert('Error al conectarse a la base de datos');
             });
+        },
+        indexarRecinto:function (id_recinto,id_proyecto) {
+            $http({
+                url:'https://www.plexobuilding.com/plexo/webservices/index_recinto.php',
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/x-www-form-urlencoded'
+                },
+                data:'id_recinto='+id_recinto+'&id_proyecto='+id_proyecto
+            }).then(function successCallback(response) {
+                if(response.data.error==null){
+                    console.log('recinto indexado');
+                }else{
+                    console.log('error: '+response.data.error);
+                }
+            },function errorCallback(response) {
+                alert('Error al indexar recinto');
+            });
         }
     }
 }]);

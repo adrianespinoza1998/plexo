@@ -21,105 +21,7 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
 
         $scope.linkProyecto='';
 
-        var cargarDatos = setInterval(cargarMedicion, 5000);
-
-        function cargarMedicion() {
-            var numCajas = 2;
-
-            if (localStorage.getItem('co2_2' != null)) {
-                guardarMedicionService.limpiarDatos();
-            }
-
-            medicionService.getMedicion(2);
-
-            localStorage.setItem('co2_2', guardarMedicionService.getCo2());
-            localStorage.setItem('temp_2', guardarMedicionService.getTemperatura());
-            localStorage.setItem('hum_2', guardarMedicionService.getHumedad());
-        }
-
-        cargarMedicion();
-
-        function cargarProyectos() {
-            var indice=0;
-
-            var id_empresa = sessionService.getIdEmpresa();
-
-            var listaProyecto=[];
-            var listaEdificio=[];
-
-            /*edificioService.getEdificio(id_empresa,function (lista) {
-                for(var i=0;i<lista.length;i++){
-                    var proyectos=[];
-
-                    indice=i;
-
-                    proyectoService.getProyectos(id_empresa,lista[i].id_edificio,function (listado) {
-                        for(var f=0;f<listado.length;f++){
-                            proyectos.push(listado[i]);
-                            if(indice==0 && f==0){
-                                $scope.linkProyecto=listado[i].link_proyecto;
-                            }
-                        }
-                    });
-
-                    listaProyecto.push({'edificio':'','proyectos':proyectos});
-
-                    console.log(listaProyecto[i]);
-
-                    proyectos=[];
-                }
-            });
-
-            $scope.listaProyecto=listaProyecto;*/
-
-            edificioService.getEdificio(id_empresa,function (listado) {
-                for(var f=0;f<listado.length;f++){
-                    listaEdificio.push(listado[i]);
-                    console.log(listaEdificio[i]);
-                }
-            });
-
-            proyectoService.getProyectos(id_empresa, 1,function (lista) {
-                for (var i = 0; i < lista.length; i++) {
-                    if(i==0){
-                        $scope.linkProyecto=lista[i].link_proyecto;
-                    }
-                    listaProyecto.push(lista[i]);
-                    console.log(listaProyecto[i]);
-                }
-            });
-            $scope.listaProyecto=listaProyecto;
-
-            console.log($scope.listaProyecto[0]);
-
-            $scope.listaProyecto=[{
-                edificio:'Edificio 1',
-                nodes:[{
-                    proyecto:'Oficina Simioslab'
-                }]
-            }]
-
-            $scope.linkProyecto='importing_gltf_BananaTree_2.html';
-        }
-
-        cargarProyectos();
-
-        for(var i=0;i<$scope.listaProyecto.length;i++){
-            console.log($scope.listaProyecto[i]);
-        }
-
-        if(localStorage.getItem("id_mesh")!=null){
-            localStorage.removeItem("id_mesh");
-        }
-
-        categoriaService.getCategoria(1);
-
-        for(var i=0;i<parseInt(guardarCategoriaService.getLargoDatos());i++){
-            $scope.listaCategoria.push(guardarCategoriaService.getCategoria('categoria['+i+']'));
-            console.log('categoria:'+$scope.listaCategoria[i]);
-        }
-
-        //var id=sessionService.getId();
+        var id=sessionService.getId();
 
         var email=sessionService.getEmail();
         $scope.email=email;
@@ -140,6 +42,60 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
 
         $scope.showSide=toggleService.hideNav;
         $scope.showProyectos=toggleService.hideProyectos;
+
+        function cargarProyectos() {
+            var listaProyectos=[];
+
+            console.log(id);
+
+            proyectoService.getProyectos(id,function (lista) {
+               for(var i=0;i<lista.length;i++){
+                   listaProyectos.push(lista[i]);
+                   console.log(listaProyectos[i]);
+                   if(i==0){
+                       $scope.linkProyecto=lista[i].link_proyecto;
+                   }
+               }
+            });
+
+            $scope.listaProyecto=listaProyectos;
+            console.log($scope.linkProyecto);
+        }
+
+        cargarProyectos();
+
+        var cargarDatos = setInterval(cargarMedicion, 5000);
+
+        function cargarMedicion() {
+            var numCajas = 2;
+
+            if (localStorage.getItem('co2_2' != null)) {
+                guardarMedicionService.limpiarDatos();
+            }
+
+            medicionService.getMedicion(2);
+
+            localStorage.setItem('co2_2', guardarMedicionService.getCo2());
+            localStorage.setItem('temp_2', guardarMedicionService.getTemperatura());
+            localStorage.setItem('hum_2', guardarMedicionService.getHumedad());
+        }
+
+        cargarMedicion();
+
+        for(var i=0;i<$scope.listaProyecto.length;i++){
+            console.log($scope.listaProyecto[i]);
+        }
+
+        if(localStorage.getItem("id_mesh")!=null){
+            localStorage.removeItem("id_mesh");
+        }
+
+        categoriaService.getCategoria(1);
+
+        for(var i=0;i<parseInt(guardarCategoriaService.getLargoDatos());i++){
+            $scope.listaCategoria.push(guardarCategoriaService.getCategoria('categoria['+i+']'));
+            console.log('categoria:'+$scope.listaCategoria[i]);
+        }
 
         toggleService.toggleVentana();
 
@@ -169,7 +125,7 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
 
         $scope.editarDatos=function () {
             var modal=$uibModal.open({
-                templateUrl:'http://www.plexobuilding.com/plexo/html/actualizar_usuario.html'
+                templateUrl:'https://www.plexobuilding.com/plexo/html/actualizar_usuario.html'
             });
         };
 
@@ -179,7 +135,7 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
                 alert("Por favor, seleccione una parte de la habitación");
             }else{
                 var ventanaDatos=$uibModal.open({
-                    templateUrl: 'http://www.plexobuilding.com/plexo/html/mantencion.html'
+                    templateUrl: 'https://www.plexobuilding.com/plexo/html/mantencion.html'
                 });
             }
         };
@@ -190,7 +146,7 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
                 alert("Por favor, seleccione una parte de la habitación");
             }else{
                 var ventanaDatos=$uibModal.open({
-                    templateUrl: 'http://www.plexobuilding.com/plexo/html/propiedad.html',
+                    templateUrl: 'https://www.plexobuilding.com/plexo/html/propiedad.html',
                 });
             }
         }
@@ -201,7 +157,7 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
                 alert("Por favor, seleccione una parte de la habitación");
             }else{
                 var ventanaDatos=$uibModal.open({
-                    templateUrl: 'http://www.plexobuilding.com/plexo/html/elemento.html',
+                    templateUrl: 'https://www.plexobuilding.com/plexo/html/elemento.html',
                 });
             }
         }
@@ -219,11 +175,34 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
             var mensaje=prompt('Ingrese nueva propiedad');
         };
 
-        $scope.toggleProyecto=function () {
-            if($scope.showProyecto){
+        $scope.toggleProyecto=function (link) {
+            $scope.linkProyecto=link;
+            console.log($scope.linkProyecto);
+            /*if($scope.showProyecto){
                 $scope.showProyecto=false;
             }else{
                 $scope.showProyecto=true;
-            }
+            }*/
+        }
+        
+        $scope.crearEstancia=function () {
+            /*var ventanaModelo=document.getElementById('modelo');
+            if(isNaN(ventanaModelo)){
+                alert('No carga iframe');
+            }else{
+                var innerDoc= ventanaModelo.contentDocument || ventanaModelo.contentDocument.document;
+                if(isNaN(innerDoc)){
+                    alert('No cargar contenido iframe')
+                }else{
+                    var crearEstancia=innerDoc.getElementById('prueba').innerHTML="<script>alert('hola')</script>";
+                }
+            }*/
+            //var modelo=angular.element(document.querySelector("iframe"));
+            var iframe=document.getElementById('modelo');
+            iframe.innerHTML="<p>Hola</p>"
+
+            var element=iframe.contentWindow.document.getElementById('prueba');
+
+            element.innerHTML="<script>alert('prueba')</script>";
         }
 }]);

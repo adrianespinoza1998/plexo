@@ -1,61 +1,55 @@
 app.factory("sessionService",["$window",function ($window) {
     return{
         setSesion:function (value) {
-            return $window.sessionStorage.setItem("sesion",value);
+            return $window.localStorage.setItem("sesion",value);
         },
         setEmail:function (value) {
-            return $window.sessionStorage.setItem("email", value);
+            return $window.localStorage.setItem("email", value);
         },
         getSesion:function () {
-            return $window.sessionStorage.getItem("sesion");
+            return $window.localStorage.getItem("sesion");
         },
         getEmail:function () {
-            return $window.sessionStorage.getItem("email");
+            return $window.localStorage.getItem("email");
         },
         closeSesion:function () {
-            return $window.sessionStorage.setItem("sesion","deslogueado");
+            return $window.localStorage.setItem("sesion","deslogueado");
         },
         getId:function(){
-            return $window.sessionStorage.getItem("id");
+            return $window.localStorage.getItem("id");
         },
         setId:function (value) {
-            return $window.sessionStorage.setItem("id",value);
+            return $window.localStorage.setItem("id",value);
         },
-        /*getContrasena:function () {
-            return $window.sessionStorage.getItem("contrasena");
-        },
-        setContrasena:function (value) {
-            return $window.sessionStorage.setItem("contrasena",value);
-        },*/
         getNombre:function () {
-            return $window.sessionStorage.getItem("nombre");
+            return $window.localStorage.getItem("nombre");
         },
         setNombre:function (value) {
-            return $window.sessionStorage.setItem("nombre",value);
+            return $window.localStorage.setItem("nombre",value);
         },
         getApPaterno:function () {
-            return $window.sessionStorage.getItem("ap_paterno");
+            return $window.localStorage.getItem("ap_paterno");
         },
         setApPaterno:function (value) {
-            return $window.sessionStorage.setItem("ap_paterno",value);
+            return $window.localStorage.setItem("ap_paterno",value);
         },
         getApMaterno:function () {
-            return $window.sessionStorage.getItem("ap_materno");
+            return $window.localStorage.getItem("ap_materno");
         },
         setApMaterno:function (value) {
-            return $window.sessionStorage.setItem("ap_materno",value);
+            return $window.localStorage.setItem("ap_materno",value);
         },
         getIdPerfil:function () {
-            return $window.sessionStorage.getItem('id_perfil');
+            return $window.localStorage.getItem('id_perfil');
         },
         setIdPerfil:function (value) {
-            return $window.sessionStorage.setItem('id_perfil',value);
+            return $window.localStorage.setItem('id_perfil',value);
         },
         getIdEmpresa:function () {
-            return $window.sessionStorage.getItem('id_empresa');
+            return $window.localStorage.getItem('id_empresa');
         },
         setIdEmpresa:function (value) {
-            return $window.sessionStorage.setItem('id_empresa',value);
+            return $window.localStorage.setItem('id_empresa',value);
         }
     }
 }]);

@@ -15,7 +15,6 @@ app.factory("loginService",["$http","$location","sessionService","toggleService"
                     var correo=response.data.correo;
                     var id_perfil=response.data.id_perfil;
                     var id=response.data.id_usuario;
-                    //var contrasena=response.data.contrasena;
                     var nombre=response.data.nombre;
                     var ap_paterno=response.data.ap_paterno;
                     var ap_materno=response.data.ap_materno;
@@ -31,8 +30,6 @@ app.factory("loginService",["$http","$location","sessionService","toggleService"
                     sessionService.setIdPerfil(id_perfil);
                     sessionService.setIdEmpresa(id_empresa);
 
-                    console.log(response.data);
-
                     toggleService.toggleVentana();
 
                     if(sessionService.getIdPerfil()=='1'){
@@ -47,7 +44,7 @@ app.factory("loginService",["$http","$location","sessionService","toggleService"
                 }
             }, function errorCallback(response) {
                 alert('Base de datos no disponible');
-                console.log('Error al llamar datos: '+response.data.errorCallback());
+                console.log('Error al llamar datos: '+response.data.error);
             });
         }
     }

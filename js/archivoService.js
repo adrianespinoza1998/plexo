@@ -9,13 +9,12 @@ app.factory("archivoService",["$http",function ($http) {
                 data:fd
             }).then(function successCallback(response) {
                 if(response.data.error==null){
-                    return true;
+                    console.log('Archivo subido');
                 }else{
-                    alert('Error: '+response.data.error);
-                    return false;
+                    console.log('Error: '+response.data.error);
                 }
             }, function errorCallback(response) {
-                return false;
+                console.log('Error al conectarse a la base de datos');
             });
         }
     }
