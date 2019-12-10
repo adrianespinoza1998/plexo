@@ -4,24 +4,21 @@
     <title>xeogl Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-    <script src="https://www.plexobuilding.com/plexo/js/angular.js"></script>
-
-    <link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/proyectostyle.css">
-    <link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/bootstrap.css">
 
     <script src="https://www.plexobuilding.com/plexo/xeogl-master/build/xeogl.js"></script>
     <script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/models/glTFModel.js"></script>
 	<script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/annotations/pin.js"></script>
 	<script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/annotations/annotation.js"></script>
 
-    <link href="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/annotations/annotation-style.css" rel="stylesheet"/>
+	<link href="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/annotations/annotation-style.css" rel="stylesheet"/>
 
     <link href="https://www.plexobuilding.com/plexo/xeogl-master/examples/css/styles.css" rel="stylesheet"/>
 
 <body>
 
+
+
 <script>
-    var cargarDatos=setInterval(actualizarDatos,5000);
 
     //---------------------------------------------------
     // Load the model
@@ -29,7 +26,7 @@
 
     var model = new xeogl.GLTFModel({
 		id: "plexo",
-        src: "xeogl-master/examples/models/gltf/ejemplo 7/oficina.gltf",
+        src: "https://www.plexobuilding.com/plexo/xeogl-master/examples/models/gltf/ejemplo 7/oficina.gltf",
 		handleNode: (function() {
        var objectCount = 0;
        return function (nodeInfo, actions) {
@@ -46,6 +43,7 @@
 
    // Highlight a couple of Objects by ID
 model.on("loaded", function () {
+   model.objects["plexo.2"].highlighted = true;
    
      var a1 = new xeogl.Annotation({
        mesh: model.objects["plexo.11"], // Red handle
@@ -54,8 +52,7 @@ model.on("loaded", function () {
        occludable: true,
        glyph: "1",
        title: "Oficina",
-       desc: "<li>CO2:"+localStorage.getItem('co2_2')+"</li><li>T°:"+localStorage.getItem('temp_2')+
-           "°C</li><li>Hum:"+localStorage.getItem('hum_2')+"%</li>",
+       desc: "<li>CO:100</li><li>T°:25°C</li><li>Hum:75%</li>",
        eye: [-3, 0, 1],
        look: [-2, -5, 5],
        up: [0.239, 0.948, -0.208],
@@ -70,8 +67,7 @@ model.on("loaded", function () {
        occludable: true,
        glyph: "2",
        title: "Bodega",
-       desc: "<li>CO2:"+localStorage.getItem('co2_2')+"</li><li>T°:"+localStorage.getItem('temp_2')+
-           "°C</li><li>Hum:"+localStorage.getItem('hum_2')+"%</li>",
+       desc: "<li>CO:189</li><li>T°:21°C</li><li>Hum:85%</li>",
        eye: [-1, -1, 0],
        look: [-1, -3, 3],
        up: [-0.066, 0.971, -0.228],
@@ -86,14 +82,14 @@ model.on("loaded", function () {
        occludable: true,
        glyph: "3",
        title: "Sala de estar",
-       desc: "<li>CO2:"+localStorage.getItem('co2_2')+"</li><li>T°:"+localStorage.getItem('temp_2')+
-           "°C</li><li>Hum:"+localStorage.getItem('hum_2')+"%</li>",
+       desc: "<li>CO:256</li><li>T°:20°C</li><li>Hum:88%</li>",
        eye: [8, 3, 6],
        look: [3, 0, 8],
        up: [-0.320, 0.872, -0.368],
        pinShown: true,
        labelShown: true
    });
+   
    
     var cameraFlight = new xeogl.CameraFlightAnimation();
 	var lastAnnotation;
@@ -133,65 +129,9 @@ model.on("loaded", function () {
    
     
     var cameraControl = new xeogl.CameraControl(); // User camera control
+	
 
-    function actualizarDatos() {
-        document.getElementsByClassName('xeogl-annotation-desc')[0].innerHTML="<li>CO2:"+
-            localStorage.getItem('co2_2')+"</li><li>T°:"+localStorage.getItem('temp_2')+
-                "°C</li><li>Hum:"+localStorage.getItem('hum_2')+"%</li>";
 
-        document.getElementsByClassName('xeogl-annotation-desc')[1].innerHTML="<li>CO2:"
-            +localStorage.getItem('co2_2')+"</li><li>T°:"+localStorage.getItem('temp_2')+
-                "°C</li><li>Hum:"+localStorage.getItem('hum_2')+"%</li>";
-        document.getElementsByClassName('xeogl-annotation-desc')[2].innerHTML="<li>CO2:"
-            +localStorage.getItem('co2_2')+"</li><li>T°:"+localStorage.getItem('temp_2')+
-            "°C</li><li>Hum:"+localStorage.getItem('hum_2')+"%</li>";
-    }
-
-    var input=myScene.input;
-
-    var mesh;
-
-    input.on("mouseclicked",function (coords) {
-        if(mesh!=null){
-            mesh.highlighted=false;
-        }
-
-        var hit=myScene.pick({
-            canvasPos:[coords[0],coords[1]]
-        });
-        if(hit){
-            mesh=hit.mesh;
-            mesh.highlighted=true;
-            console.log(mesh.valueOf().id);
-            localStorage.setItem("id_mesh",mesh.valueOf().id);
-        }
-    });
-
-    window.onclick=function () {
-        if(mesh!=null){
-            if(mesh.highlighted==false){
-                localStorage.removeItem("id_mesh");
-            }
-        }
-    }
 </script>
-<script src="https://www.plexobuilding.com/plexo/js/homeCtrl.js"></script>
-<div id="probar">
-    <!--script>
-        boxMesh=new xeogl.Mesh({
-            geometry: new xeogl.BoxGeometry({
-                center:[0,0,0],
-                xSize:1,
-                ySize:1,
-                zSize:1
-            }),
-            material: new xeogl.PhongMaterial({
-                diffuseMap: new xeogl.Texture({
-                    src: 'xeogl-master/examples/textures/diffuse/uvGrid2.jpg'
-                })
-            })
-        });
-    </script-->
-</div>
 </body>
 </html>

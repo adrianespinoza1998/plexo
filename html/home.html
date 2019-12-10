@@ -74,7 +74,7 @@
                     </ul>
                 </ul-->
                 <ul ng-repeat="proyecto in listaProyecto">
-                    <li style="cursor:pointer;" ng-click="toggleProyecto()">{{proyecto.nombre_proyecto}}</li>
+                    <li style="cursor:pointer;" ng-click="toggleProyecto(proyecto.link_proyecto)">{{proyecto.nombre_proyecto}}</li>
                 </ul>
             </div>
         </div>
