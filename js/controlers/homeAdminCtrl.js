@@ -294,11 +294,9 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     function validarEmpresa(telefono,direccion){
         var validar=false;
-
         if(isNaN(telefono)==false && telefono<1000000000 && telefono>99999999 && direccion.length>2){
             validar=true;
         }
-
         return validar;
     }
 
@@ -307,7 +305,6 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     $scope.crearEmpresa=function () {
         if($scope.nombreEmpresa!='' && $scope.direccionEmpresa!='' && $scope.telefonoEmpresa!=''){
             var error=0;
-
             if(validarEmpresa($scope.telefonoEmpresa,$scope.direccionEmpresa)){
                 empresaService.createEmpresa($scope.nombreEmpresa,$scope.direccionEmpresa,$scope.telefonoEmpresa);
             }else{
@@ -325,7 +322,6 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
             validar=false;
             return validar;
         }
-
         return validar;
     }
 
@@ -362,10 +358,25 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     $scope.crearEdificios=function () {
         if($scope.nombreEdificio!='' && $scope.direccionEdificio!='' && $scope.numPisos!=''){
-            edificioService.crearEdificio($scope.nombreEdificio,$scope.direccionEdificio,$scope.numPisos);
-            $scope.listaEdificio=cargarEdificios();
-            $scope.mostrarEdificio=false;
-            $scope.mostrarEdificio=true;
+            edificioService.crearEdificio($scope.nombreEdificio,$scope.direccionEdificio,$scope.numPisos,function (estado) {
+                if(estado){
+                    $scope.listaEdificio=[];
+                    var listaEdificios=cargarEdificios();
+                    for(var i=0;i<listaEdificios.length;i++){
+                        $scope.listaEdificio.push(listaEdificios[i]);
+                    }
+                    //cargarRecintos(listaEdificios[i].id_edificio);
+                }
+            });
+            $scope.$watchCollection("listaEdificio",function (newValue,oldValue) {
+                if(newValue==oldValue){
+                    console.log('Colección no actualizada');
+                    $scope.listaEdificio=cargarEdificios();
+                }else{
+                    console.log('Colección actualizada');
+                    console.log($scope.listaEdificio);
+                }
+            });
         }else{
             alert('Campos del formulario vacios');
         }
@@ -399,7 +410,6 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     $scope.crearRecinto=function () {
         $scope.idEdificio=$window.localStorage.getItem('id_edificio');
-
         if($scope.idEdificio!=''){
             recintoService.createRecinto($scope.idEdificio,$scope.nombreRecinto,$scope.numPiso);
         }else{
@@ -409,14 +419,10 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     
     $scope.cargarRecinto=function (id_edificio) {
         $scope.idEdificio=id_edificio;
-
         $scope.listaRecintos=cargarRecintos(id_edificio);
-
         $scope.listaEstancias=cargarEstancias($scope.idRecinto);
-
         $window.localStorage.removeItem('id_edificio');
         $window.localStorage.setItem('id_edificio',id_edificio);
-
         limpiarDatos($scope.listaEdificio,$scope.listaRecintos,$scope.listaEstancias);
     }
 
@@ -426,11 +432,8 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     $scope.crearEstancia=function () {
         if($scope.nombreEstancia!='' && $scope.idRecinto!='' && $scope.ncaja!=''){
-
             estanciaService.crearEstancia($scope.idRecinto,$scope.nombreEstancia,$scope.ncaja);
-
             cargarEstancias($scope.idRecinto);
-
         }else {
             alert('Uno o más campos vacios');
         }
@@ -443,15 +446,11 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     $scope.crearProyecto=function () {
         if(document.getElementById('file').files[0]!=null && $scope.idEmpresa!='' && $scope.idTipoProyecto!=''
             && $scope.nombreProyecto!='' && $scope.direccionProyecto!='' && $scope.idAdmin!='' && $scope.idEdificio!=''){
-
             var fd = new FormData();
             var files = document.getElementById('file').files[0];
             fd.append('file',files);
-
             var link='https://www.plexobuilding.com/plexo/webservices/upload/'+files.name;
-
             var extension='';
-
             for(var i=0;i<files.name.length;i++){
                 if(files.name.substring(i,i+1)=='.'){
                     extension=files.name.substring(i,files.name.length);
@@ -459,15 +458,12 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
             }
 
             if(extension=='.html') {
-
                 archivoService.uploadArchivo(fd);
-
                 proyectoService.crearProyecto($scope.idTipoProyecto, $scope.idEmpresa, $scope.idAdmin, $scope.nombreProyecto,
                     $scope.direccionProyecto, link, $scope.idEdificio);
 
                 proyectoService.getMaxIdProyecto(function (id) {
                     console.log(id);
-
                     proyectoService.addPermiso(id,$scope.idAdmin,$scope.idAdmin);
 
                     if($scope.idRecinto!='' && $scope.idEstancia!=''){
@@ -478,7 +474,6 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
                 for(var i=0;i<$scope.estancia.length;i++){
                     console.log($scope.estancia[i]);
                 }
-
             }else{
                 alert('Tipo de archivo incorrecto, no es un documento html');
             }

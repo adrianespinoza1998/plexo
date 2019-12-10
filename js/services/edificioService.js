@@ -51,7 +51,7 @@ app.factory("edificioService",["$http",function ($http) {
                 console.log('Error al conectarse a la BD');
             })
         },
-        crearEdificio:function (nombre_edificio,direccion,num_pisos) {
+        crearEdificio:function (nombre_edificio,direccion,num_pisos,callback) {
             $http({
                 url:'https://www.plexobuilding.com/plexo/webservices/crear_edificio.php',
                 method:'POST',
@@ -62,9 +62,11 @@ app.factory("edificioService",["$http",function ($http) {
             }).then(function successCallback(response) {
                 if(response.data.error==null){
                     alert('Edificio creado');
+                    callback(true);
                 }else{
                     alert('Error al crear edificio');
                     console.log(response.data.error);
+                    callback(false);
                 }
             },function errorCallback(response) {
                 alert('Error al conectarse a la BD');
