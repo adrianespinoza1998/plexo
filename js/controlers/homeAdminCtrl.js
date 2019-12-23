@@ -19,6 +19,7 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     $scope.seleccionarCrear=function(link){
         $scope.linkOpcion=link;
+        guardarCrearService.setCrear(link);
     }
 
     $scope.customer={};
@@ -33,7 +34,6 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     if(guardarCrearService.getCrear()!=null){
         $scope.linkOpcion=guardarCrearService.getCrear();
-        console.log(guardarCrearService.getCrear());
     }
 
     $scope.showCrear=false;
@@ -44,18 +44,6 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
         }else{
             $scope.showCrear=true;
         }
-    }
-
-    $scope.empresa=function () {
-        $scope.linkOpcion="html/crear_empresa.html";
-    }
-
-    $scope.usuario=function () {
-        $scope.linkOpcion="html/crear_usuario.html";
-    }
-
-    $scope.proyecto=function () {
-        $scope.linkOpcion="html/crear_proyecto.html";
     }
 
     //Datos empresa
@@ -137,7 +125,7 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
         edificioService.listarEdificios(function (listadoEdificio) {
             for (var i = 0; i < listadoEdificio.length; i++) {
                 listaEdificios.push(listadoEdificio[i]);
-                if (i == 0) {
+                if (i == listadoEdificio.length-1) {
                     $window.localStorage.setItem("id_edificio", listadoEdificio[i].id_edificio);
                 }
             }
@@ -361,10 +349,6 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
         }
     }
 
-    function recargarRecinto(){
-        $scope.listaRecintos=cargarRecintos(guardarIdEdificio.getIdEdificio());
-    }
-
     //Muestra ventana para crear edificio
     $scope.ventanaEdificio=function () {
         $uibModal.open({
@@ -379,26 +363,9 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     $scope.crearEdificios=function () {
         if($scope.nombreEdificio!='' && $scope.direccionEdificio!='' && $scope.numPisos!=''){
-            edificioService.crearEdificio($scope.nombreEdificio,$scope.direccionEdificio,$scope.numPisos,function (estado) {
-                /*this.listaEdificio=[];
-                var listaEdificios=cargarEdificios();
-                for(var i=0;i<listaEdificios.length;i++){
-                    this.listaEdificio.push(listaEdificios[i]);
-                }*/
-            });
-            /*$scope.$watchCollection("listaEdificio",function (newValue,oldValue) {
-                if(newValue==oldValue){
-                    console.log('Colección no actualizada');
-                    this.listaEdificio=cargarEdificios();
-                }else{
-                    console.log('Colección actualizada');
-                    console.log($scope.listaEdificio);
-                }
-            });
-            $timeout(function () {
-                this.listaEdificio=cargarEdificios();
-                console.log($scope.listaEdificio);
-            },500);*/
+            edificioService.crearEdificio($scope.nombreEdificio,$scope.direccionEdificio,$scope.numPisos);
+            var lista = cargarEdificios();
+
             guardarCrearService.setCrear("html/crear_proyecto.html");
             $route.reload();
         }else{
@@ -435,22 +402,8 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
         if($scope.idEdificio!=''){
             recintoService.createRecinto(id_edificio,$scope.nombreRecinto,$scope.numPiso);
 
-            $timeout(function () {
-                recargarRecinto();
-            },0)
-
-            console.log($scope.listaRecintos);
-
-            validar=false;
-
-            $scope.$watchCollection('listaRecintos',function (newValue,oldValue) {
-                if(newValue==oldValue){
-                    console.log('Informacion no actualizada');
-                    recargarRecinto();
-                }else{
-                    validarUsuario = true;
-                }
-            });
+            guardarCrearService.setCrear("html/crear_proyecto.html");
+            $route.reload();
 
         }else{
             alert('id edificio vacio');

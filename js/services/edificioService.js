@@ -1,6 +1,6 @@
 app.factory("edificioService",["$http",function ($http) {
     return{
-        getEdificio:function (id_empresa,callback) {
+        getEdificio:function (id_empresa) {
             $http({
                 url:'https://www.plexobuilding.com/plexo/webservices/get_edificio.php',
                 method:'POST',
@@ -16,7 +16,6 @@ app.factory("edificioService",["$http",function ($http) {
                         for(var i=0;i<response.data.length;i++){
                             listaEdificios.push(response.data[i])
                         }
-                        callback(listaEdificios);
                     }else{
                         console.log(response.data.error);
                     }

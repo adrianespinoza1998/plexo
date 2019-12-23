@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <select class="form-control">
-                                <option ng-repeat="edificio in listaEdificio track by edificio.id_edificio" ng-click="cargarRecinto(edificio.id_edificio)">
+                                <option ng-repeat="edificio in listaEdificio | orderBy : '-id_edificio'" ng-click="cargarRecinto(edificio.id_edificio)">
                                     {{edificio.nombre_edificio}}
                                 </option>
                             </select>
@@ -72,7 +72,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             <select id="recintos" class="form-control">
-                                <option ng-repeat="recinto in listaRecintos" ng-click="cargarEstancia(recinto.id_recinto)">
+                                <option ng-repeat="recinto in listaRecintos | orderBy : '-id_recinto'" ng-click="cargarEstancia(recinto.id_recinto)">
                                     {{recinto.nombre_recinto}}
                                 </option>
                             </select>
