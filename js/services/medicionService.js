@@ -19,7 +19,6 @@ app.factory("medicionService",["$http","guardarMedicionService",function ($http,
                     guardarMedicionService.setTemperatura(temperatura);
                     guardarMedicionService.setHumedad(humedad);
 
-                    console.log(response.data);
                 }else{
                     console.log('No hay mediciones');
                 }

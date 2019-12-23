@@ -5,7 +5,7 @@
             <p>Crear proyecto</p>
         </div>
         <div class="card-body">
-            <form class="row">
+            <div class="row">
                 <div class="col-md-4 col-lg-5">
                     <p>*Empresa: </p>
                 </div>
@@ -54,53 +54,36 @@
                 <div class="col-md-8 col-lg-7">
                     <div class="row">
                         <div class="col-md-10">
-                            <select ng-show="mostrarEdificio" class="form-control">
-                                <option ng-repeat="edificio in listaEdificio" ng-click="cargarRecinto(edificio.id_edificio)">
+                            <select class="form-control">
+                                <option ng-repeat="edificio in listaEdificio track by edificio.id_edificio" ng-click="cargarRecinto(edificio.id_edificio)">
                                     {{edificio.nombre_edificio}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-secondary" ng-click="ventanaEdificio()">+</button>
+                            <button data-toggle="tooltip" data-placement="top" title="Agregar edificio" class="btn btn-secondary" ng-click="ventanaEdificio()">+</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-5">
-                    <p>Recinto: </p>
+                    <p>*Recinto: </p>
                 </div>
                 <div class="col-md-8 col-lg-7">
                     <div class="row">
                         <div class="col-md-10">
-                            <select class="form-control">
+                            <select id="recintos" class="form-control">
                                 <option ng-repeat="recinto in listaRecintos" ng-click="cargarEstancia(recinto.id_recinto)">
                                     {{recinto.nombre_recinto}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-secondary" ng-click="ventanaRecintos()">+</button>
+                            <button title="Agregar recinto" class="btn btn-secondary" ng-click="ventanaRecintos()">+</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-5">
-                    <p>Estancia: </p>
-                </div>
-                <div class="col-md-8 col-lg-7">
-                    <div class="row">
-                        <div class="col-md-10" id="estancias">
-                            <select class="form-control estancia">
-                                <option ng-repeat="estancia in listaEstancias" ng-click="setEstancia(estancia.id_estancia)">
-                                    {{$scope.estancia.push(estancia); estancia.nombre_estancia}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-secondary" ng-click="ventanaEstancia()">+</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-5">
-                    <p>Subir proyecto: </p>
+                    <p>*Subir proyecto: </p>
                 </div>
                 <div class="col-md-8 col-lg-7">
                     <input type="file" id="file" name="file" class="form-control" file-models="customer.file">
@@ -108,7 +91,7 @@
                 <div class="col-md-12 text-center mt-3">
                     <input type="submit" class="btn btn-secondary" value="Guardar" ng-click="crearProyecto()">
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

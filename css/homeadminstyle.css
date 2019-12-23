@@ -88,12 +88,10 @@ hr {
 
 #contContenido{
     position: relative;
-    width: 78%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    float: right;
-    transition: all 0.4s;
     height: 90vh;
     margin: 0;
     padding: 0;
@@ -115,11 +113,11 @@ hr {
     cursor: pointer;
 }
 
-#contContenido.maximizar{
+/*#contContenido.maximizar{
     position: relative;
     width: 100%;
     z-index: 0;
-}
+}*/
 
 #btnProyectos{
     cursor: pointer;
@@ -138,7 +136,7 @@ iframe{
 
 #contFormulario{
     display: inline-block;
-    width: 70%;
+    width: 50%;
 }
 
 form{
@@ -149,6 +147,37 @@ crear{
     border: 3px #4e555b;
 }
 
-crear.show{
+/*crear.show{
     margin-top: -100px;
+}*/
+md-list-item{
+    margin: 0;
+    padding: 0;
+}
+
+.toggle{
+    transition: ease-in-out 0.65s;
+}
+
+.toggle.esconder{
+    margin-top: -300px;
+    visibility: hidden;
+    height: 0px;
+}
+
+#contCrear{
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    transition: ease-in-out 0.65s;
+}
+
+.fa-chevron-down{
+    transition: ease-in-out 0.5s;
+}
+
+.fa-chevron-up{
+    transition: ease-in-out 0.5s;
 }

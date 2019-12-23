@@ -8,9 +8,7 @@ app.factory("archivoService",["$http",function ($http) {
                 headers:{'Content-Type':undefined, 'Process-Data':false},
                 data:fd
             }).then(function successCallback(response) {
-                if(response.data.error==null){
-                    console.log('Archivo subido');
-                }else{
+                if(response.data.error!=null){
                     console.log('Error: '+response.data.error);
                 }
             }, function errorCallback(response) {

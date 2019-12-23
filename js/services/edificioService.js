@@ -40,7 +40,6 @@ app.factory("edificioService",["$http",function ($http) {
 
                     for(var i=0;i<response.data.length;i++){
                         listaEdificio.push(response.data[i]);
-                        console.log(listaEdificio[i]);
                     }
 
                     callback(listaEdificio);

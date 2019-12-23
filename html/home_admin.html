@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/homeadminstyle.css">
 <body class="bg-white">
 
-<div class="container-fluid" id="contTopBar">
-    <!--top bar-->
+<!--div class="container-fluid" id="contTopBar">
+    <top bar>
     <nav class="navbar navbar-light bg-light text-center border border-light row" id="topBar">
         <div class="col-md-1">
             <div class="row">
@@ -29,15 +29,97 @@
         </div>
     </nav>
 
-    <!--Wrap content-->
+    <Wrap content>
     <div id="contContenido" ng-class="{'maximizar': showSide}" class="container-fluid">
         <div id="contFormulario" ng-include="linkOpcion"></div>
     </div>
+</div-->
+
+<md-toolbar class="bg-light container-fluid text-secondary">
+    <div class="row">
+        <div class="col-md-1">
+            <div class="row">
+                <div class="col-6">
+                    <!--button ng-click="activarSideNav()" class="text-secondary btn btn-light"><i class="fa fa-bars" aria-hidden="true" data-tap-disabled="false"></i></button-->
+                    <md-button ng-click="openLeftMenu()">
+                        <a class="fa fa-bars"></a>
+                    </md-button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-2 mt-1">
+            <img src="https://www.plexobuilding.com/plexo/imagenes/logo_plexo.png" width="100px">
+        </div>
+        <div class="col-md-5">
+            <div class="float-right">
+                <div class="dropdown" style="display: inline-block">
+                    <button type="button" class="text-secondary btn btn-light dropdown-toggle" data-toggle="dropdown">
+                        <!--a class="fa fa-user align-middle" style="font-size: 200%"></a--><img style="width: 50px" src="https://www.plexobuilding.com/plexo/imagenes/login_user.png"><a>      </a><a class="text-center">{{email}}</a></button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a id="editarDatos" class="dropdown-item dr" ng-click="editarDatos()">Editar datos de usuario</a>
+                        <a id="cerrarSesion" class="dropdown-item" ng-click="cerrarSesion()">Cerrar sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</md-toolbar>
+
+<!--Wrap content-->
+<div class="container-fluid bg-dark" id="contContenido">
+    <div id="contFormulario" ng-include="linkOpcion"></div>
 </div>
+
+<md-sidenav md-component-id="left" class="md-sidenav-left bg-secondary">
+    <md-toolbar class="bg-light container-fluid" ng-click="openLeftMenu()">
+        <div class="row">
+            <div class="col-md-6">
+                <md-button class="text-secondary">
+                    <a class="fa fa-bars"></a>
+                </md-button>
+            </div>
+        </div>
+    </md-toolbar>
+    <!--md-button style="width: 95%" class="text-light" ng-click="home()">
+        <a>Home</a>
+    </md-button-->
+    <md-list id="contCrear">
+        <div class="bg-secondary" style="z-index: 1; position: relative">
+            <md-list-item class="md-2-line">
+                <div class="md-list-item-text md-button text-light" ng-click="home()">
+                    <div class="row">
+                        <div class="col-md-6 mt-2"><p class="text-light">Home</p></div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-1"><i class="fa fa-home"></i></div>
+                    </div>
+                </div>
+            </md-list-item>
+            <md-list-item class="md-2-line">
+                <div class="md-list-item-text md-button text-light" ng-click="toggleOpciones()">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 mt-2"><p class="text-light"><i class="fa fa-plus" aria-hidden="true"></i>   Crear</p></div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-1"><i class="fas" ng-class="{'fa-chevron-down':mostrarOpciones,'fa-chevron-up':!mostrarOpciones}"></i></div>
+                    </div>
+                </div>
+            </md-list-item>
+        </div>
+        <div class="bg-dark" style="z-index: 0; position: relative">
+            <md-list-item class="toggle md-2-line" ng-repeat="item in listaOpciones" ng-class="{'esconder':mostrarOpciones}">
+                <div class="md-list-item-text md-button text-light" ng-click="seleccionarCrear(item.link)">
+                    <div class="md-list-item-text">
+                        <p class="text-light">{{item.title}}</p>
+                    </div>
+                </div>
+            </md-list-item>
+        </div>
+    </md-list>
+</md-sidenav>
 
 <!--sidebar-->
 
-<nav id="sidebar" class="bg-secondary text-white border-secondary" ng-class="{'hidden': showSide}">
+<!--nav id="sidebar" class="bg-secondary text-white border-secondary" ng-class="{'hidden': showSide}">
     <div class="bg-secondary dropdown container-fluid" style="position: relative; z-index: 0">
             <ul class="text-left">
                 <li class="btn btn-secondary mt-3" style="width: 85%" ng-click="home()">Home</li>
@@ -49,22 +131,9 @@
                 </ul>
             </ul>
     </div>
-</nav>
+</nav-->
 
-<script src="https://www.plexobuilding.com/plexo/js/jquery-3.4.1.min.js"></script>
 <script src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
 
-<!--Xeogl-->
 
-<script src="https://www.plexobuilding.com/plexo/xeogl-master/build/xeogl.js"></script>
-<script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/models/glTFModel.js"></script>
-<script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/annotations/pin.js"></script>
-<script src="https://www.plexobuilding.com/plexo/xeogl-master/examples/js/annotations/annotation.js"></script>
-
-<!--Pooperjs-->
-
-<script defer src="https://www.plexobuilding.com/plexo/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script defer src="https://www.plexobuilding.com/plexo/js/bootstrap.js"></script>
-<script defer src="https://www.plexobuilding.com/plexo/js/bootstrap.min.js"></script>
 </body>
