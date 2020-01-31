@@ -439,8 +439,9 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     }
 
     $scope.crearProyecto=function () {
-        if(document.getElementById('file').files[0]!=null && $scope.idEmpresa!='' && $scope.idTipoProyecto!=''
-            && $scope.nombreProyecto!='' && $scope.idAdmin!='' && $scope.idEdificio!=''){
+        if(document.getElementById('file').files[0]!=null && guardarIdEdificio.getIdEmpresa()!=null &&
+            guardarIdEdificio.getIdTipoProyecto()!=null && $scope.nombreProyecto!='' && guardarIdEdificio.getIdAdmin()!=null
+            && guardarIdEdificio.getIdEdificio()!=null){
             var fd = new FormData();
             var files = document.getElementById('file').files[0];
             fd.append('file',files);
@@ -455,12 +456,12 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
             if(extension=='.html') {
                 archivoService.uploadArchivo(fd,function (file) {
                     link='https://www.plexobuilding.com/plexo/webservices/upload/'+file;
-                    proyectoService.crearProyecto($scope.idTipoProyecto, $scope.idEmpresa, $scope.idAdmin, $scope.nombreProyecto,
-                        link,$scope.idEdificio);
+                    proyectoService.crearProyecto(guardarIdEdificio.getIdTipoProyecto(), guardarIdEdificio.getIdEmpresa()
+                        , guardarIdEdificio.getIdAdmin(), $scope.nombreProyecto, link,guardarIdEdificio.getIdEdificio());
 
                     proyectoService.getMaxIdProyecto(function (id) {
                         console.log(id);
-                        proyectoService.addPermiso(id,$scope.idAdmin,$scope.idAdmin);
+                        proyectoService.addPermiso(id,guardarIdEdificio.getIdAdmin(),guardarIdEdificio.getIdAdmin());
 
                         console.log('id_empresa:'+$scope.idEmpresa+', id_tipo_proyecto:'+$scope.idTipoProyecto+', id_admin:'+
                             $scope.idAdmin+', nombre_proyecto:'+$scope.nombreProyecto+', direccion_proyecto:'+$scope.nombreProyecto

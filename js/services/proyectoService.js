@@ -1,4 +1,4 @@
-app.factory("proyectoService",["$http","guardarIdProyecto",function ($http,guardarIdProyecto) {
+app.factory("proyectoService",["$http","guardarIdProyecto","archivoService",function ($http,guardarIdProyecto,archivoService) {
     return{
         getProyectos:function (id_usuario,callback) {
             $http({
@@ -43,6 +43,8 @@ app.factory("proyectoService",["$http","guardarIdProyecto",function ($http,guard
                 if(response.data.error==null){
                     alert('Proyecto creado');
                 }else{
+                    var nombre_archivo=link_proyecto.replace('https://www.plexobuilding.com/plexo/webservices/upload/','');
+                    archivoService.deleteArchivo(nombre_archivo);
                     alert('Error: '+response.data.error);
                 }
             },function errorCallback(response) {
