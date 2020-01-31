@@ -1,4 +1,4 @@
-app.factory("edificioService",["$http",function ($http) {
+app.factory("edificioService",["$http","guardarCrearService",function ($http,guardarCrearService) {
     return{
         getEdificio:function (id_empresa) {
             $http({
@@ -49,22 +49,23 @@ app.factory("edificioService",["$http",function ($http) {
                 console.log('Error al conectarse a la BD');
             })
         },
-        crearEdificio:function (nombre_edificio,direccion,num_pisos,callback) {
+        crearEdificio:function (nombre_edificio,direccion,nro,num_pisos,callback) {
             $http({
                 url:'https://www.plexobuilding.com/plexo/webservices/crear_edificio.php',
                 method:'POST',
                 headers:{
                     'Content-Type':'application/x-www-form-urlencoded'
                 },
-                data:'nombre_edificio='+nombre_edificio+'&direccion='+direccion+'&num_pisos='+num_pisos
+                data:'nombre_edificio='+nombre_edificio+'&direccion='+direccion+'&nro='+nro+'&num_pisos='+num_pisos
             }).then(function successCallback(response) {
                 if(response.data.error==null){
+                    guardarCrearService.setEdificioSelected(response.data.id);
+                    console.log(guardarCrearService.getEdificioSelected());
                     alert('Edificio creado');
-                    callback(true);
+                    callback();
                 }else{
                     alert('Error al crear edificio');
                     console.log(response.data.error);
-                    callback(false);
                 }
             },function errorCallback(response) {
                 alert('Error al conectarse a la BD');

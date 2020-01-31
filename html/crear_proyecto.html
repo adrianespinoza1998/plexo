@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/opcionstyle.css">
 <div ng-controller="homeAdminCtrl">
     <div class="card" id="contenedor">
-        <div class="card-header">
-            <p>Crear proyecto</p>
+        <div class="card-header text-center">
+            <p class="display-5">Crear proyecto</p>
         </div>
         <div class="card-body">
             <div class="row">
@@ -11,7 +11,8 @@
                 </div>
                 <div class="col-md-8 col-lg-7">
                     <select class="form-control">
-                        <option ng-repeat="empresa in listaEmpresas" ng-click="admin(empresa.id_empresa)">
+                        <option>--Seleccione empresa--</option>
+                        <option ng-repeat="empresa in listaEmpresas" ng-selected="empresaSelected == empresa.id_empresa" ng-click="getAdmin(empresa.id_empresa)">
                         {{empresa.nombre_empresa}}
                         </option>
                     </select>
@@ -21,7 +22,8 @@
                 </div>
                 <div class="col-md-8 col-lg-7">
                     <select class="form-control">
-                        <option ng-repeat="tipo in tiposProyectos" ng-click="tipoProyecto(tipo.id_tipo_proyecto)">
+                        <option>--Seleccione tipo de proyecto--</option>
+                        <option ng-repeat="tipo in tiposProyectos" ng-click="tipoProyecto(tipo.id_tipo_proyecto)" ng-selected="tipoProyectoSelected == tipo.id_tipo_proyecto">
                             {{tipo.nombre_tipo_proyecto}}
                         </option>
                     </select>
@@ -30,20 +32,21 @@
                     <p>*Nombre: </p>
                 </div>
                 <div class="col-md-8 col-lg-7">
-                    <input type="text" class="form-control" ng-model="nombreProyecto">
+                    <input type="text" class="form-control" ng-model="nombreProyecto" name="Nombre" ng-model-options="{ getterSetter: true }">
                 </div>
-                <div class="col-md-4 col-lg-5">
+                <!--div class="col-md-4 col-lg-5">
                     <p>*Dirección: </p>
                 </div>
                 <div class="col-md-8 col-lg-7">
-                    <input type="text" class="form-control" ng-model="direccionProyecto">
-                </div>
+                    <input type="text" class="form-control" ng-model="direccionProyecto" name="Direccion" ng-model-options="{ getterSetter: true }">
+                </div-->
                 <div class="col-md-4 col-lg-5">
                     <p>Administrador del proyecto: </p>
                 </div>
                 <div class="col-md-8 col-lg-7">
                     <select class="form-control">
-                        <option ng-repeat="usuario in listaUsuarios" ng-click="setAdmin(usuario.id_usuario)">
+                        <option>--Seleccione administrador del proyecto--</option>
+                        <option ng-repeat="usuario in listaUsuarios" ng-click="setAdmin(usuario.id_usuario)" ng-selected="adminSelected == usuario.id_usuario">
                         {{usuario.nombre+' '+usuario.ap_paterno}}
                         </option>
                     </select>
@@ -55,7 +58,8 @@
                     <div class="row">
                         <div class="col-md-10">
                             <select class="form-control">
-                                <option ng-repeat="edificio in listaEdificio | orderBy : '-id_edificio'" ng-click="cargarRecinto(edificio.id_edificio)">
+                                <option>--Seleccione edificio del proyecto--</option>
+                                <option ng-repeat="edificio in listaEdificio | orderBy: -id_edificio" ng-click="cargarRecinto(edificio.id_edificio)" ng-selected="edificioSelected == edificio.id_edificio">
                                     {{edificio.nombre_edificio}}
                                 </option>
                             </select>
@@ -72,7 +76,8 @@
                     <div class="row">
                         <div class="col-md-10">
                             <select id="recintos" class="form-control">
-                                <option ng-repeat="recinto in listaRecintos | orderBy : '-id_recinto'" ng-click="cargarEstancia(recinto.id_recinto)">
+                                <option>--Seleccione recinto--</option>
+                                <option ng-repeat="recinto in listaRecintos | orderBy: -id_recinto" ng-click="guardarRecinto(recinto.id_recinto)" ng-selected="recintoSelected == recinto.id_recinto">
                                     {{recinto.nombre_recinto}}
                                 </option>
                             </select>
@@ -95,4 +100,3 @@
         </div>
     </div>
 </div>
-<script src="https://www.plexobuilding.com/plexo/js/homeAdminCtrl.js"></script>

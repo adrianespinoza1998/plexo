@@ -28,7 +28,7 @@ app.factory("proyectoService",["$http","guardarIdProyecto",function ($http,guard
                 console.log('Error al leer proyectos:'+response.data.message);
             });
         },
-        crearProyecto:function (id_tipo_proyecto, id_empresa, id_administrador, nombre_proyecto, direccion, link_proyecto,
+        crearProyecto:function (id_tipo_proyecto, id_empresa, id_administrador, nombre_proyecto, link_proyecto,
                                 id_edificio) {
             $http({
                 url:'https://www.plexobuilding.com/plexo/webservices/crear_proyecto.php',
@@ -37,7 +37,7 @@ app.factory("proyectoService",["$http","guardarIdProyecto",function ($http,guard
                     'Content-Type':'application/x-www-form-urlencoded'
                 },
                 data:'id_tipo_proyecto='+id_tipo_proyecto+'&id_empresa='+id_empresa+'&id_administrador='+id_administrador+
-                    '&nombre_proyecto='+nombre_proyecto+'&direccion='+direccion+'&link_proyecto='+link_proyecto+
+                    '&nombre_proyecto='+nombre_proyecto+'&link_proyecto='+link_proyecto+
                     '&id_edificio='+id_edificio
             }).then(function successCallback(response) {
                 if(response.data.error==null){

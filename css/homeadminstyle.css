@@ -113,12 +113,6 @@ hr {
     cursor: pointer;
 }
 
-/*#contContenido.maximizar{
-    position: relative;
-    width: 100%;
-    z-index: 0;
-}*/
-
 #btnProyectos{
     cursor: pointer;
     z-index: 1;
@@ -180,4 +174,9 @@ md-list-item{
 
 .fa-chevron-up{
     transition: ease-in-out 0.5s;
+}
+
+#listCrear{
+    width: 100%;
+    display: inline-block;
 }

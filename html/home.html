@@ -1,21 +1,22 @@
 <link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/homestyle.css">
 <body>
 
-    <div class="container-fluid" id="contTopBar">
-    <!--top bar-->
-        <nav class="navbar navbar-light bg-light text-center border border-light row" id="topBar">
+    <md-toolbar class="bg-light container-fluid text-secondary">
+        <div class="row">
             <div class="col-md-1">
                 <div class="row">
                     <div class="col-6">
-                        <button ng-click="activarSideNav()" class="text-secondary btn btn-light"><i class="fa fa-bars" aria-hidden="true" data-tap-disabled="false"></i></button>
+                        <md-button aria-label="true" ng-click="openLeftMenu()">
+                            <a class="fa fa-bars"></a>
+                        </md-button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4"></div>
-            <div class="col-md-1">
+            <div class="col-md-2 mt-1">
                 <img src="https://www.plexobuilding.com/plexo/imagenes/logo_plexo.png" width="100px">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="float-right">
                     <button title="Crear estancia" class="btn btn-light text-secondary">
                         <a class="fa fa-square"></a>
@@ -30,9 +31,9 @@
                         <a class="fa fa-plus"></a>
                     </button>
                     <button title="Mantención" class="btn btn-light text-secondary" ng-click="verMantencion()" style="display: inline-block"><a class="fa fa-cog"></a></button>
-                    <div class="dropdown hola" style="display: inline-block">
+                    <div class="dropdown" style="display: inline-block">
                         <button type="button" class="text-secondary btn btn-light dropdown-toggle" data-toggle="dropdown">
-                            <a class="fa fa-user align-middle" style="font-size: 200%"></a><a>      </a><a class="text-center">{{email}}</a></button>
+                            <img style="width: 50px" src="https://www.plexobuilding.com/plexo/imagenes/login_user.png"><a>      </a><a class="text-center">{{email}}</a></button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a id="editarDatos" class="dropdown-item dr" ng-click="editarDatos()">Editar datos de usuario</a>
                             <a id="cerrarSesion" class="dropdown-item" ng-click="cerrarSesion()">Cerrar sesión</a>
@@ -40,7 +41,8 @@
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </md-toolbar>
 
         <!--Wrap content-->
         <div id="contContenido" ng-class="{'maximizar': showSide}">
@@ -50,10 +52,10 @@
 
     <!--sidebar-->
 
-    <nav id="sidebar" class="bg-secondary text-white border-secondary" ng-class="{'hidden': showSide}">
+    <!--nav id="sidebar" class="bg-secondary text-white border-secondary" ng-class="{'hidden': showSide}">
         <div class="bg-secondary dropdown container-fluid" style="position: relative; z-index: 0">
             <div ui-tree class="p-2">
-                <!--ol ui-tree-nodes="" ng-model="nodes">
+                <ol ui-tree-nodes="" ng-model="nodes">
                     <li ng-repeat="item in nodes" ui-tree-node>
                         <div class="btn btn-secondary" ui-tree-handle>
                             {{item.title}}
@@ -66,19 +68,51 @@
                             </li>
                         </ol>
                     </li>
-                </ol-->
-                <!--ul ng-repeat="edificio in listaProyecto">
+                </ol>
+                <ul ng-repeat="edificio in listaProyecto">
                     <li>{{edificio.nombre_edificio}}</li>
                     <ul ng-repeat="proyecto in edificio.proyectos">
                         <li></li>
                     </ul>
-                </ul-->
+                </ul>
                 <ul ng-repeat="proyecto in listaProyecto">
                     <li style="cursor:pointer;" ng-click="toggleProyecto(proyecto.link_proyecto)">{{proyecto.nombre_proyecto}}</li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav-->
+
+    <md-sidenav md-component-id="left" class="md-sidenav-left bg-secondary">
+        <md-toolbar class="bg-light container-fluid" ng-click="openLeftMenu()">
+            <div class="row">
+                <div class="col-md-6">
+                    <md-button aria-label="true" class="text-secondary">
+                        <a class="fa fa-bars"></a>
+                    </md-button>
+                </div>
+            </div>
+        </md-toolbar>
+        <md-list id="contCrear">
+            <div class="bg-secondary" style="z-index: 1; position: relative">
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text md-button text-light" ng-click="toggleOpciones()">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 mt-2"><p class="text-light"><i class="fa fa-plus" aria-hidden="true"></i>   Proyectos</p></div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-1"><i class="fas" ng-class="{'fa-chevron-down':mostrarOpciones,'fa-chevron-up':!mostrarOpciones}"></i></div>
+                        </div>
+                    </div>
+                </md-list-item>
+            </div>
+            <div class="bg-dark" style="z-index: 0; position: relative">
+                <md-list-item class="toggle justify-content-center" ng-repeat="proyecto in listaProyecto" ng-class="{'esconder':mostrarOpciones}">
+                    <div id="listCrear" class="md-list-item-text md-button text-light" ng-click="toggleProyecto(proyecto.link_proyecto)">
+                        <p class="text-light">{{proyecto.nombre_proyecto}}</p>
+                    </div>
+                </md-list-item>
+            </div>
+        </md-list>
+    </md-sidenav>
 
     <script src="https://www.plexobuilding.com/plexo/js/jquery-3.4.1.min.js"></script>
     <script src="https://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>

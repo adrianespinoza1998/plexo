@@ -1,10 +1,18 @@
 <link rel="stylesheet" href="https://www.plexobuildinng.com/plexo/css/bootstrap.css">
 <div ng-app="app">
     <div ng-controller="homeCtrl">
-        <form class="card" style="padding: 10px">
-            <p>Elemento:<input class="form-control"></p>
-            <div class="text-center">
-                <button class="btn btn-secondary" style="width: max-content">Guardar</button>
+        <form class="card">
+            <div style="padding-right: 10px" class="row">
+                <div class="col-md-11"></div>
+                <div class="col-md-1">
+                    <i ng-click="cerrarElemento()" style="cursor: pointer; justify-content: left" class="text-secondary fa fa-window-close" aria-label="true"></i>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>Elemento:<input class="form-control"></p>
+                <div class="text-center">
+                    <button class="btn btn-secondary" style="width: max-content">Guardar</button>
+                </div>
             </div>
         </form>
     </div>

@@ -1,6 +1,6 @@
-app.factory("recintoService",["$http",function ($http) {
+app.factory("recintoService",["$http","guardarCrearService",function ($http,guardarCrearService) {
     return{
-        createRecinto:function (id_edificio,nombre_recinto,num_piso) {
+        createRecinto:function (id_edificio,nombre_recinto,num_piso,callback) {
             $http({
                 url:'https://www.plexobuilding.com/plexo/webservices/crear_recinto.php',
                 method:'POST',
@@ -10,7 +10,9 @@ app.factory("recintoService",["$http",function ($http) {
                 data:'id_edificio='+id_edificio+'&nombre_recinto='+nombre_recinto+'&numero_piso='+num_piso
             }).then(function successCallback(response) {
                 if(response.data.error==null){
+                    guardarCrearService.setRecintoSelected(response.data.id);
                     alert('Recinto creado');
+                    callback();
                 }else{
                     alert('Error: '+response.data.error);
                 }

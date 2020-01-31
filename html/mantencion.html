@@ -1,10 +1,18 @@
 <link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/bootstrap.css">
 <div ng-app="app">
-    <div ng-controller="homeCtrl">
-        <form class="card" style="padding: 10px">
-            <p>Fecha de mantención <input type="date" class="form-control"></p>
-            <div class="text-center">
-                <button class="btn btn-secondary" style="width: max-content;">Guardar</button>
+    <div>
+        <form class="card">
+            <div class="row" style="padding-right: 10px">
+                <div class="col-md-11"></div>
+                <div class="col-md-1">
+                    <i ng-click="cerrarMantencion()" style="cursor: pointer; justify-content: left" class="text-secondary fa fa-window-close" aria-label="true"></i>
+                </div>
+            </div>
+            <div class="card-body">
+                <p>Fecha de mantención <input type="date" class="form-control"></p>
+                <div class="text-center">
+                    <button class="btn btn-secondary" style="width: max-content;">Guardar</button>
+                </div>
             </div>
         </form>
     </div>

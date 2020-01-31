@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/opcionstyle.css">
 <div ng-controller="homeAdminCtrl">
     <form class="card" id="contenedor">
-        <div class="card-header">
-            <p>Crear Usuario</p>
+        <div class="card-header text-center">
+            <p class="display-5">Crear Usuario</p>
         </div>
         <div class="card-body row">
             <div class="col-md-4">
@@ -24,16 +24,26 @@
                 <input ng-model="ap_materno_usuario" type="text" class="form-control">
             </div>
             <div class="col-md-4">
-                <p>*Rut con digito verificador: </p>
+                <p>*Rut sin puntos: </p>
             </div>
-            <div class="col-md-8">
-                <input ng-model="rut" ui-mask="" type="text" class="form-control">
+            <div class="col-md-4">
+                <input ng-model="rut" ui-mask="" type="text" class="form-control" only-numbers>
+            </div>
+            <div class="col-md-2 text-right">
+                <p>*DV</p>
+            </div>
+            <div class="col-md-2">
+                <select class="form-control">
+                    <option ng-click="setDv('--')">--</option>
+                    <option ng-repeat="dv in listaDv" ng-click="setDv(dv)" only-numbers>{{dv}}</option>
+                </select>
             </div>
             <div class="col-md-4">
                 <p>*Empresa: </p>
             </div>
             <div class="col-md-8">
                 <select class="form-control">
+                    <option ng-click="admin('--')">--Seleccione empresa--</option>
                     <option ng-repeat="empresa in listaEmpresas" ng-click="admin(empresa.id_empresa)">
                         {{empresa.nombre_empresa}}
                     </option>

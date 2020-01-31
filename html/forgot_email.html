@@ -1,9 +1,15 @@
 <div ng-app="app">
-    <div ng-controller="homeCtrl">
-        <form class="card" style="padding: 10px">
-            <p>Ingrese su email:<input type="email" class="form-control"></p>
-            <div class="text-center">
-                <button class="btn btn-secondary" style="width: max-content">Guardar</button>
+    <div>
+        <form class="card">
+            <div class="row" style="padding-right: 10px">
+                <div class="col-md-11"></div>
+                <div class="col-md-1"><i ng-click="cerrarEmail()" style="cursor: pointer; justify-content: left" class="text-secondary fa fa-window-close" aria-label="true"></i></div>
+            </div>
+            <div class="card-body">
+                <p>Ingrese su email:<input type="email" class="form-control" ng-model="email"></p>
+                <div class="text-center">
+                    <button class="btn btn-secondary" ng-click="recuperar()" style="width: max-content">Guardar</button>
+                </div>
             </div>
         </form>
     </div>

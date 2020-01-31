@@ -2,8 +2,8 @@
 <div ng-controller="homeAdminCtrl">
     <div>
         <form class="card" id="contenedor">
-            <div class="card-header">
-                <p>Crear Empresa</p>
+            <div class="card-header text-center">
+                <p class="display-5">Crear Empresa</p>
             </div>
             <div class="card-body row">
                 <div class="col-md-3">
@@ -15,14 +15,18 @@
                 <div class="col-md-3">
                     <p>*Dirección: </p>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-5">
                     <input ng-model="direccionEmpresa" type="text" class="form-control">
                 </div>
+                <div class="col-md-2 text-right"><p>*Numero</p></div>
+                <div class="col-md-2">
+                    <input ng-model="nro" type="text" class="form-control" only-numbers>
+                </div>
                 <div class="col-md-3">
-                    <p>Telefono: </p>
+                    <p>*Telefono: </p>
                 </div>
                 <div class="col-md-9">
-                    <input ng-model="telefonoEmpresa" type="tel" class="form-control">
+                    <input ng-model="telefonoEmpresa" type="tel" class="form-control" only-numbers>
                 </div>
                 <div class="col-md-12 text-center mt-3">
                     <input ng-click="crearEmpresa()" type="submit" class="btn btn-secondary" value="Guardar">

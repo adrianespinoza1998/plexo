@@ -1,4 +1,4 @@
-<div ng-controller="homeAdminCtrl">
+<div>
     <form class="card">
         <div class="card-header">
             <div class="row">
@@ -20,7 +20,7 @@
                 <p>Numero de piso: </p>
             </div>
             <div class="col-md-8">
-                <input ng-model="numPiso" type="number" class="form-control">
+                <input ng-model="numPiso" type="number" class="form-control" only-numbers>
             </div>
             <div class="col-md-12 text-center mt-3">
                 <input ng-click="crearRecinto()" type="submit" class="btn btn-secondary" value="Guardar">

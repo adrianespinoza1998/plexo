@@ -83,3 +83,49 @@ html {
     //background-color: #ffffff;
 }
 
+#circlePadre{
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+    /* Safari and Chrome */
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+.circulo{
+    transition: ease-in-out 0.5s;
+    opacity: 0;
+}
+
+.circulo.mostrar{
+    visibility: visible;
+    opacity: 1;
+}
+
+.circulo.esconder{
+    visibility: hidden;
+    opacity: 0;
+}
+
+.login{
+    transition: ease-in-out 0.5s;
+}
+
+login.mostrar{
+    visibility: visible;
+    opacity: 1;
+}
+
+.login.esconder{
+    visibility: hidden;
+    opacity: 0;
+}
+
+#circle {
+    display: inline-block;
+    margin-left: 50%;
+    margin-top:20%;
+}
+

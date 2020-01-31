@@ -22,14 +22,14 @@ app.factory("empresaService",["$http",function ($http) {
                 console.log("Error al obtener empresas en base de datos");
             });
         },
-        createEmpresa:function (nombre_empresa,direccion,telefono) {
+        createEmpresa:function (nombre_empresa,direccion,nro,telefono) {
             $http({
                 url:'https://www.plexobuilding.com/plexo/webservices/crear_empresa.php',
                 method:'POST',
                 headers:{
                     'Content-Type':'application/x-www-form-urlencoded'
                 },
-                data:'nombre_empresa='+nombre_empresa+'&direccion='+direccion+'&telefono='+telefono
+                data:'nombre_empresa='+nombre_empresa+'&direccion='+direccion+'&nro='+nro+'&telefono='+telefono
             }).then(function successCallback(response) {
                 if(response.data.error==null){
                     alert('Empresa Creada');

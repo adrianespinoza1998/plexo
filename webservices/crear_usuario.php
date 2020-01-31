@@ -15,7 +15,7 @@ include 'PHPMailer-master/src/Exception.php';
 include 'auth_mail_plexo.php';
 
 if(isset($_POST['nombre']) && isset($_POST['ap_paterno']) && isset($_POST['ap_materno']) && isset($_POST['rut'])
-    && isset($_POST['id_empresa']) && isset($_POST['correo'])){
+    && isset($_POST['id_empresa']) && isset($_POST['correo']) && isset($_POST['dv'])){
 
     $nombre=$_POST['nombre'];
     $ap_paterno=$_POST['ap_paterno'];
@@ -23,12 +23,13 @@ if(isset($_POST['nombre']) && isset($_POST['ap_paterno']) && isset($_POST['ap_ma
     $rut=$_POST['rut'];
     $id_empresa=$_POST['id_empresa'];
     $correo=$_POST['correo'];
+    $dv=$_POST['dv'];
 
     //Crear contraseña
     $password=strtolower(substr($nombre,0,1).$ap_paterno);
     $contrasena=password_hash($password,PASSWORD_BCRYPT,['cost'=>12]);
 
-    $query="INSERT INTO usuario VALUES(0,2,".$id_empresa.",'".$correo."','".$contrasena."','".$rut."','".$nombre."','".$ap_paterno."','".$ap_materno."')";
+    $query="INSERT INTO usuario VALUES(0,2,".$id_empresa.",'".$correo."','".$contrasena."',".$rut.",".$dv.",'".$nombre."','".$ap_paterno."','".$ap_materno."')";
 
     if($conexion->query($query)==true){
         $mail = new PHPMailer(true);

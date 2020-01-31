@@ -1,9 +1,19 @@
 app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$location","$window", "medicionService",
     "guardarMedicionService", "proyectoService", "parteHabitacionService","$uibModal",
-    "usuarioService","categoriaService", "guardarCategoriaService","edificioService",
+    "usuarioService","categoriaService", "guardarCategoriaService","edificioService","$mdSidenav",
     function ($scope, sessionService, toggleService, $location,$window, medicionService,guardarMedicionService,
               proyectoService, parteHabitacionService,$uibModal,usuarioService,categoriaService,
-              guardarCategoriaService,edificioService) {
+              guardarCategoriaService,edificioService,$mdSidenav) {
+
+        $scope.openLeftMenu = function() {
+            $mdSidenav('left').toggle();
+        }
+
+        $scope.mostrarOpciones=true;
+
+        $scope.toggleOpciones=function(){
+            $scope.mostrarOpciones=!$scope.mostrarOpciones;
+        }
 
         $scope.showProyecto=false;
 
@@ -125,7 +135,12 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
 
         $scope.editarDatos=function () {
             var modal=$uibModal.open({
-                templateUrl:'https://www.plexobuilding.com/plexo/html/actualizar_usuario.html'
+                templateUrl:'https://www.plexobuilding.com/plexo/html/actualizar_usuario.html',
+                controller: function ($scope,$uibModalInstance) {
+                    $scope.cerrarDatos=function () {
+                        $uibModalInstance.close();
+                    }
+                }
             });
         };
 
@@ -135,7 +150,12 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
                 alert("Por favor, seleccione una parte de la habitación");
             }else{
                 var ventanaDatos=$uibModal.open({
-                    templateUrl: 'https://www.plexobuilding.com/plexo/html/mantencion.html'
+                    templateUrl: 'https://www.plexobuilding.com/plexo/html/mantencion.html',
+                    controller: function ($scope,$uibModalInstance) {
+                        $scope.cerrarMantencion=function () {
+                            $uibModalInstance.close();
+                        }
+                    }
                 });
             }
         };
@@ -147,6 +167,11 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
             }else{
                 var ventanaDatos=$uibModal.open({
                     templateUrl: 'https://www.plexobuilding.com/plexo/html/propiedad.html',
+                    controller: function ($scope,$uibModalInstance) {
+                        $scope.cerrarPropiedad=function () {
+                            $uibModalInstance.close();
+                        }
+                    }
                 });
             }
         }
@@ -158,6 +183,11 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
             }else{
                 var ventanaDatos=$uibModal.open({
                     templateUrl: 'https://www.plexobuilding.com/plexo/html/elemento.html',
+                    controller: function ($scope,$uibModalInstance) {
+                        $scope.cerrarElemento=function () {
+                            $uibModalInstance.close();
+                        }
+                    }
                 });
             }
         }
@@ -178,26 +208,9 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
         $scope.toggleProyecto=function (link) {
             $scope.linkProyecto=link;
             console.log($scope.linkProyecto);
-            /*if($scope.showProyecto){
-                $scope.showProyecto=false;
-            }else{
-                $scope.showProyecto=true;
-            }*/
         }
         
         $scope.crearEstancia=function () {
-            /*var ventanaModelo=document.getElementById('modelo');
-            if(isNaN(ventanaModelo)){
-                alert('No carga iframe');
-            }else{
-                var innerDoc= ventanaModelo.contentDocument || ventanaModelo.contentDocument.document;
-                if(isNaN(innerDoc)){
-                    alert('No cargar contenido iframe')
-                }else{
-                    var crearEstancia=innerDoc.getElementById('prueba').innerHTML="<script>alert('hola')</script>";
-                }
-            }*/
-            //var modelo=angular.element(document.querySelector("iframe"));
             var iframe=document.getElementById('modelo');
             iframe.innerHTML="<p>Hola</p>"
 
