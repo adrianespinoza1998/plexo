@@ -1,13 +1,20 @@
-<div ng-app="app">
+<link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/opcionstyle.css">
+<div>
     <div>
         <form class="card">
-            <div class="row" style="padding-right: 10px">
-                <div class="col-md-11"></div>
-                <div class="col-md-1"><i ng-click="cerrarEmail()" style="cursor: pointer; justify-content: left" class="text-secondary fa fa-window-close" aria-label="true"></i></div>
+            <div class="card-header row text-center">
+                <div class="col-md-1"></div>
+                <div class="col-md-10"><p class="display-6">Recuperar contraseña</p></div>
+                <div class="col-md-1"><i ng-click="cerrarEmail()" style="cursor: pointer; margin-right: 10px" class="text-secondary fa fa-window-close" aria-label="true"></i></div>
             </div>
-            <div class="card-body">
-                <p>Ingrese su email:<input type="email" class="form-control" ng-model="email"></p>
-                <div class="text-center">
+            <div class="card-body row">
+                <div class="col-md-4 text-right">
+                    <p>Ingrese su email:</p>
+                </div>
+                <div class="col-md-8">
+                    <input type="email" class="form-control" ng-model="email">
+                </div>
+                <div class="text-center col-md-12 mt-2">
                     <button class="btn btn-secondary" ng-click="recuperar()" style="width: max-content">Guardar</button>
                 </div>
             </div>

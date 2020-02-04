@@ -5,7 +5,7 @@ app.factory("recuperarContrasenaService",["$http",function ($http) {
                 url:'https://www.plexobuilding.com/plexo/webservices/recuperar_email.php',
                 method:'POST',
                 headers:{
-                    'Content.Type':'application/x-www-form-urlencoded'
+                    'Content-Type':'application/x-www-form-urlencoded'
                 },
                 data:'email='+email
             }).then(function successCallback(response) {

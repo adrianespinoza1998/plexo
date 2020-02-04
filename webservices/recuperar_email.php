@@ -85,6 +85,7 @@ if(isset($_POST['email'])){
 
 }else{
     $salida['error']="Email vacio";
+    $salida['email']=$_POST['email'];
     echo json_encode($salida);
 }
 

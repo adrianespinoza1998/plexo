@@ -1,8 +1,15 @@
 app.controller("loginCtrl",["$scope","loginService","$uibModal","$timeout","$window",
     function ($scope, loginService,$uibModal,$timeout,$window) {
 
-    /*$window.sessionStorage.clear();
-    $window.localStorage.clear();*/
+    $scope.mostrarPagina=false;
+
+    loginService.getSesion(function (correo,contrasena) {
+        if(correo!=null){
+            loginService.login(correo,contrasena);
+        }else{
+            $scope.mostrarPagina=true;
+        }
+    });
 
     $scope.isChecked=false;
 
@@ -14,7 +21,7 @@ app.controller("loginCtrl",["$scope","loginService","$uibModal","$timeout","$win
     $scope.mostrar=function (){
         $timeout(function () {
             this.circulo=true;
-        },2000);
+        },3000);
     }
 
     $scope.forgotPassword=function(){
@@ -25,7 +32,7 @@ app.controller("loginCtrl",["$scope","loginService","$uibModal","$timeout","$win
                     $uibModalInstance.close();
                 }
 
-                $scope.email='';
+                $scope.email="";
 
                 $scope.recuperar=function (){
                     recuperarContrasenaService.forgotPassword($scope.email);
@@ -35,6 +42,10 @@ app.controller("loginCtrl",["$scope","loginService","$uibModal","$timeout","$win
     }
 
     $scope.login=function () {
+        if($scope.isChecked){
+            loginService.guardarSesion($scope.mail,$scope.pass);
+        }
+
         var email=$scope.mail;
         var passw=$scope.pass;
         loginService.login(email,passw);

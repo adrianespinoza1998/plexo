@@ -46,6 +46,59 @@ app.factory("loginService",["$http","$location","sessionService","toggleService"
                 alert('Base de datos no disponible');
                 console.log('Error al llamar datos: '+response.data.error);
             });
+        },
+        guardarSesion:function (correo,contrasena) {
+            $http({
+                url:'https://www.plexobuilding.com/plexo/webservices/guardar_sesion.php',
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/x-www-form-urlencoded'
+                },
+                data:'correo='+correo+'&contrasena='+contrasena
+            }).then(function successCallback(response) {
+                if(response.data.error==null){
+                    console.log('Sesión guardada');
+                }else{
+                    alert("Error al guardar sesión");
+                }
+            },function errorCallback(response) {
+                console.log('Error al conectarse al servidor');
+            });
+        },
+        getSesion:function (callback) {
+            $http({
+                url:'https://www.plexobuilding.com/plexo/webservices/get_sesion.php',
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/x-www-form-urlencoded'
+                }
+            }).then(function successCallback(response) {
+                if(response.data.error==null){
+                    callback(response.data.correo,response.data.contrasena);
+                }else{
+                    callback(null,null);
+                    console.log(response.data.error);
+                }
+            },function errorCallback(response) {
+                console.log('Error al conectarse al servidor');
+            });
+        },
+        destroySesion:function () {
+            $http({
+                url:'https://www.plexobuilding.com/plexo/webservices/destroy_sesion.php',
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/x-www-form-urlencoded'
+                }
+            }).then(function successCallback(response) {
+                if(response.data.error==null){
+                    console.log(response.data.estado);
+                }else{
+                    console.log(response.data.error);
+                }
+            },function errorCallback(response) {
+                alert('Error al conectarse al servidor');
+            })
         }
     }
 }]);

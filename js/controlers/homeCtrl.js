@@ -1,9 +1,9 @@
 app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$location","$window", "medicionService",
     "guardarMedicionService", "proyectoService", "parteHabitacionService","$uibModal",
-    "usuarioService","categoriaService", "guardarCategoriaService","edificioService","$mdSidenav",
+    "usuarioService","categoriaService", "guardarCategoriaService","edificioService","$mdSidenav","loginService",
     function ($scope, sessionService, toggleService, $location,$window, medicionService,guardarMedicionService,
               proyectoService, parteHabitacionService,$uibModal,usuarioService,categoriaService,
-              guardarCategoriaService,edificioService,$mdSidenav) {
+              guardarCategoriaService,edificioService,$mdSidenav,loginService) {
 
         $scope.openLeftMenu = function() {
             $mdSidenav('left').toggle();
@@ -36,16 +36,13 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
         var email=sessionService.getEmail();
         $scope.email=email;
 
-        $scope.hide=false;
-
         var nombre=sessionService.getNombre();
         $scope.nombre=nombre;
 
         var ap_paterno=sessionService.getApPaterno();
         $scope.ap_paterno = ap_paterno;
 
-        var ap_materno=sessionService.getApMaterno();
-        $scope.ap_materno=ap_materno;
+        $scope.hide=false;
 
         //var contrasena=sessionService.getContrasena();
         $scope.contrasena='';
@@ -116,6 +113,7 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
 
         $scope.cerrarSesion=function () {
             sessionService.closeSesion();
+            loginService.destroySesion();
             $window.location.href='../index.html';
         };
 
@@ -136,10 +134,36 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
         $scope.editarDatos=function () {
             var modal=$uibModal.open({
                 templateUrl:'https://www.plexobuilding.com/plexo/html/actualizar_usuario.html',
-                controller: function ($scope,$uibModalInstance) {
+                controller: function ($scope,$uibModalInstance,sessionService) {
                     $scope.cerrarDatos=function () {
                         $uibModalInstance.close();
                     }
+
+                    var email=sessionService.getEmail();
+                    $scope.email=email;
+
+                    var nombre=sessionService.getNombre();
+                    $scope.nombre=nombre;
+
+                    var ap_paterno=sessionService.getApPaterno();
+                    $scope.ap_paterno = ap_paterno;
+
+                    var ap_materno=sessionService.getApMaterno();
+                    $scope.ap_materno=ap_materno;
+
+                    $scope.contrasena='';
+
+                    $scope.validarContrasena='';
+
+                    $scope.modificar=function () {
+                        if($scope.contrasena==$scope.validarContrasena){
+                            usuarioService.updateUsuario(sessionService.getId(),$scope.email,$scope.contrasena,$scope.nombre,
+                                $scope.ap_paterno,$scope.ap_materno);
+                        }else{
+                            alert("Contraseñas no coindiden");
+                        }
+                    };
+
                 }
             });
         };
@@ -191,11 +215,6 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
                 });
             }
         }
-
-        $scope.modificar=function () {
-            usuarioService.updateUsuario(sessionService.getId(),$scope.email,$scope.contrasena,$scope.nombre,
-                $scope.ap_paterno,$scope.ap_materno);
-        };
 
         $scope.anadirCategoria=function () {
             var mensaje=prompt('Ingrese nueva categoría');

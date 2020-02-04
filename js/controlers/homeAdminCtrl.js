@@ -1,11 +1,11 @@
 app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$location","$window","$uibModal",
     "usuarioService","tipoProyectoService","empresaService","listaUsuarioService","edificioService",
     "recintoService","estanciaService","medicionService","archivoService","proyectoService", "guardarIdEdificio",
-    "$mdSidenav","$route","guardarCrearService","$parse","$interval","$timeout",
+    "$mdSidenav","$route","guardarCrearService","$parse","$interval","$timeout","loginService",
     function ($scope, sessionService, toggleService, $location,$window,$uibModal,usuarioService,
               tipoProyectoService,empresaService,listaUsuarioService,edificioService,recintoService,
               estanciaService,medicionService,archivoService,proyectoService,guardarIdEdificio,
-              $mdSidenav,$route,guardarCrearService,$parse,$interval,$timeout) {
+              $mdSidenav,$route,guardarCrearService,$parse,$interval,$timeout,loginService) {
 
     $scope.openLeftMenu = function() {
         $mdSidenav('left').toggle();
@@ -243,6 +243,12 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
     var email=sessionService.getEmail();
     $scope.correo=email;
 
+    var nombre=sessionService.getNombre();
+    $scope.nombre=nombre;
+
+    var ap_paterno=sessionService.getApPaterno();
+    $scope.ap_paterno = ap_paterno;
+
     //Barra lateral
     $scope.showSide=toggleService.hideNav;
     $scope.showProyectos=toggleService.hideProyectos;
@@ -256,6 +262,7 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
     $scope.cerrarSesion=function () {
         sessionService.closeSesion();
+        loginService.destroySesion();
         $window.location.href='../index.html';
     }
 

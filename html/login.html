@@ -8,7 +8,7 @@
     <md-progress-circular id="circle" md-diameter="100" md-mode="indeterminate"></md-progress-circular>
 </div>
 
-<div class="vw-100 h-100 login" ng-class="{'mostrar':circulo,'esconder':!circulo}" id="contLogin">
+<div ng-show="mostrarPagina" class="vw-100 h-100 login" ng-class="{'mostrar':circulo,'esconder':!circulo}" id="contLogin">
     <div class="d-flex justify-content-center h-100">
         <div class="user_card">
             <div class="d-flex justify-content-center">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group mt-2">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customControlInline">
+                            <input ng-model="isChecked" type="checkbox" class="custom-control-input" id="customControlInline">
                             <label class="custom-control-label" for="customControlInline">Recordar usuario</label>
                         </div>
                     </div>
