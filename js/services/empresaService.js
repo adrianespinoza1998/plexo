@@ -1,4 +1,4 @@
-app.factory("empresaService",["$http",function ($http) {
+app.factory("empresaService",["$http","$mdDialog",function ($http,$mdDialog) {
     return{
         getEmpresa:function (callback) {
             $http({
@@ -32,10 +32,19 @@ app.factory("empresaService",["$http",function ($http) {
                 data:'nombre_empresa='+nombre_empresa+'&direccion='+direccion+'&nro='+nro+'&telefono='+telefono
             }).then(function successCallback(response) {
                 if(response.data.error==null){
-                    alert('Empresa Creada');
-                }else{
-                    alert('Error al crear empresa: '+response.data.error);
+                    //alert('Empresa Creada');
+                    $mdDialog.show($mdDialog.alert({
+                        textContent: 'Empresa creada',
+                        ok: 'OK'
+                    }));
+                }else {
+                    //alert('Error al crear empresa: '+response.data.error);
+                    $mdDialog.show($mdDialog.alert({
+                        textContent: 'Error al crear empresa: ' + response.data.error,
+                        ok: 'OK'
+                    }));
                 }
+
             }, function errorCallback(response) {
                 console.log('Error al introducir datos a bd');
             });

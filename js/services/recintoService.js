@@ -1,4 +1,4 @@
-app.factory("recintoService",["$http","guardarCrearService",function ($http,guardarCrearService) {
+app.factory("recintoService",["$http","guardarCrearService","$mdDialog",function ($http,guardarCrearService,$mdDialog) {
     return{
         createRecinto:function (id_edificio,nombre_recinto,num_piso,callback) {
             $http({
@@ -11,13 +11,25 @@ app.factory("recintoService",["$http","guardarCrearService",function ($http,guar
             }).then(function successCallback(response) {
                 if(response.data.error==null){
                     guardarCrearService.setRecintoSelected(response.data.id);
-                    alert('Recinto creado');
+                    //alert('Recinto creado');
+                    $mdDialog.show($mdDialog.alert({
+                        textContent:'Recinto creado',
+                        ok:'OK'
+                    }));
                     callback();
                 }else{
-                    alert('Error: '+response.data.error);
+                    //alert('Error: '+response.data.error);
+                    $mdDialog.show($mdDialog.alert({
+                        textContent:'Error: '+response.data.error,
+                        ok:'OK'
+                    }));
                 }
             }, function errorCallback(response) {
-                alert('Error al conectarse a la base de datos');
+                //alert('Error al conectarse a la base de datos');
+                $mdDialog.show($mdDialog.alert({
+                    textContent:'Error al conectarse a la base de datos',
+                    ok:'OK'
+                }));
             });
         },
         listarRecinto:function (id_edificio,callback) {
@@ -39,7 +51,11 @@ app.factory("recintoService",["$http","guardarCrearService",function ($http,guar
                     callback(listaRecinto);
                 }
             }, function errorCallback(response) {
-                alert('Error al conectarse a la base de datos');
+                //alert('Error al conectarse a la base de datos');
+                $mdDialog.show($mdDialog.alert({
+                    textContent:'Error al conectarse a la base de datos',
+                    ok:'OK'
+                }));
             });
         },
         indexarRecinto:function (id_recinto,id_proyecto) {
@@ -57,7 +73,11 @@ app.factory("recintoService",["$http","guardarCrearService",function ($http,guar
                     console.log('error: '+response.data.error);
                 }
             },function errorCallback(response) {
-                alert('Error al indexar recinto');
+                //alert('Error al indexar recinto');
+                $mdDialog.show($mdDialog.alert({
+                    textContent:'Error al indexar recinto',
+                    ok:'OK'
+                }));
             });
         }
     }

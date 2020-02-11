@@ -1,4 +1,4 @@
-app.factory("edificioService",["$http","guardarCrearService",function ($http,guardarCrearService) {
+app.factory("edificioService",["$http","guardarCrearService","$mdDialog",function ($http,guardarCrearService,$mdDialog) {
     return{
         getEdificio:function (id_empresa) {
             $http({
@@ -61,14 +61,26 @@ app.factory("edificioService",["$http","guardarCrearService",function ($http,gua
                 if(response.data.error==null){
                     guardarCrearService.setEdificioSelected(response.data.id);
                     console.log(guardarCrearService.getEdificioSelected());
-                    alert('Edificio creado');
+                    //alert('Edificio creado');
+                    $mdDialog.show($mdDialog.alert({
+                        textContent:'Edificio creado',
+                        ok:'OK'
+                    }));
                     callback();
                 }else{
-                    alert('Error al crear edificio');
+                    //alert('Error al crear edificio');
+                    $mdDialog.show($mdDialog.alert({
+                        textContent:'Error al crear edificio',
+                        ok:'OK'
+                    }));
                     console.log(response.data.error);
                 }
             },function errorCallback(response) {
-                alert('Error al conectarse a la BD');
+                //alert('Error al conectarse a la BD');
+                $mdDialog.show($mdDialog.alert({
+                    textContent:'Error al conectarse a la BD',
+                    ok:'OK'
+                }));
                 console.log(response.data.error);
             });
         }

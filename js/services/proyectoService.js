@@ -1,4 +1,5 @@
-app.factory("proyectoService",["$http","guardarIdProyecto","archivoService",function ($http,guardarIdProyecto,archivoService) {
+app.factory("proyectoService",["$http","guardarIdProyecto","archivoService","$mdDialog",function ($http,guardarIdProyecto,
+                                                                                                  archivoService,$mdDialog) {
     return{
         getProyectos:function (id_usuario,callback) {
             $http({
@@ -41,14 +42,26 @@ app.factory("proyectoService",["$http","guardarIdProyecto","archivoService",func
                     '&id_edificio='+id_edificio
             }).then(function successCallback(response) {
                 if(response.data.error==null){
-                    alert('Proyecto creado');
+                    //alert('Proyecto creado');
+                    $mdDialog.show($mdDialog.alert({
+                        textContent:'Proyecto creado',
+                        ok:'OK'
+                    }));
                 }else{
                     var nombre_archivo=link_proyecto.replace('https://www.plexobuilding.com/plexo/webservices/upload/','');
                     archivoService.deleteArchivo(nombre_archivo);
-                    alert('Error: '+response.data.error);
+                    //alert('Error: '+response.data.error);
+                    $mdDialog.show($mdDialog.alert({
+                        textContent:'Error: '+response.data.error,
+                        ok:'OK'
+                    }));
                 }
             },function errorCallback(response) {
-                alert('Error al conectarse a la BD');
+                //alert('Error al conectarse a la BD');
+                $mdDialog.show($mdDialog.alert({
+                    textContent:'Error al conectarse a la BD',
+                    ok:'OK'
+                }));
             });
         },
         addPermiso:function (id_proyecto,id_usuario,id_administrador_proyecto) {
@@ -66,7 +79,11 @@ app.factory("proyectoService",["$http","guardarIdProyecto","archivoService",func
                     console.log('error: '+response.data.error);
                 }
             },function errorCallback(response) {
-                alert('error al otorgar permiso');
+                //alert('error al otorgar permiso');
+                $mdDialog.show($mdDialog.alert({
+                    textContent:'Error al otorgar permiso',
+                    ok:'OK'
+                }));
             });
         },
         getMaxIdProyecto:function (callback) {
@@ -85,7 +102,11 @@ app.factory("proyectoService",["$http","guardarIdProyecto","archivoService",func
                     console.log(response.data.error);
                 }
             },function errorCallback(response) {
-                alert('Error al conectarse a la base de datos');
+                //alert('Error al conectarse a la base de datos');
+                $mdDialog.show($mdDialog.alert({
+                    textContent:'Error al conectarse a la base de datos',
+                    ok:'OK'
+                }));
             });
         }
     }

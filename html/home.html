@@ -18,10 +18,10 @@
             </div>
             <div class="col-md-5">
                 <div class="float-right">
-                    <button title="Crear estancia" class="btn btn-light text-secondary">
+                    <button title="Crear estancia" class="btn btn-light text-secondary" ng-click="crearEstancia()">
                         <a class="fa fa-square"></a>
                     </button>
-                    <button title="Definir estancia" class="btn btn-light text-secondary" ng-click="crearEstancia()">
+                    <button title="Definir estancia" class="btn btn-light text-secondary" ng-click="definirEstancia()">
                         <a class="fa fa-cube"></a>
                     </button>
                     <button title="Elemento" class="btn btn-light text-secondary" ng-click="verElemento()" style="display: inline-block">
@@ -50,37 +50,7 @@
         </div>
     </div>
 
-    <!--sidebar-->
-
-    <!--nav id="sidebar" class="bg-secondary text-white border-secondary" ng-class="{'hidden': showSide}">
-        <div class="bg-secondary dropdown container-fluid" style="position: relative; z-index: 0">
-            <div ui-tree class="p-2">
-                <ol ui-tree-nodes="" ng-model="nodes">
-                    <li ng-repeat="item in nodes" ui-tree-node>
-                        <div class="btn btn-secondary" ui-tree-handle>
-                            {{item.title}}
-                        </div>
-                        <ol ui-tree-nodes="" ng-model="item.nodes">
-                            <li ng-repeat="subitem in item.nodes" ui-tree-node>
-                                <div class="btn btn-secondary" ui-tree-handle>
-                                    {{subitem.title}}
-                                </div>
-                            </li>
-                        </ol>
-                    </li>
-                </ol>
-                <ul ng-repeat="edificio in listaProyecto">
-                    <li>{{edificio.nombre_edificio}}</li>
-                    <ul ng-repeat="proyecto in edificio.proyectos">
-                        <li></li>
-                    </ul>
-                </ul>
-                <ul ng-repeat="proyecto in listaProyecto">
-                    <li style="cursor:pointer;" ng-click="toggleProyecto(proyecto.link_proyecto)">{{proyecto.nombre_proyecto}}</li>
-                </ul>
-            </div>
-        </div>
-    </nav-->
+    <!--Sidebar-->
 
     <md-sidenav md-component-id="left" class="md-sidenav-left bg-secondary">
         <md-toolbar class="bg-light container-fluid" ng-click="openLeftMenu()">
@@ -94,6 +64,15 @@
         </md-toolbar>
         <md-list id="contCrear">
             <div class="bg-secondary" style="z-index: 1; position: relative">
+                <md-list-item class="md-2-line" ng-show="mostrarAdministrar">
+                    <div class="md-list-item-text md-button text-light" ng-click="administrar()">
+                        <div class="row">
+                            <div class="col-md-6 mt-2"><p class="text-light">Administrar</p></div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-1"><i class="fas fa-users"></i></div>
+                        </div>
+                    </div>
+                </md-list-item>
                 <md-list-item class="md-2-line">
                     <div class="md-list-item-text md-button text-light" ng-click="toggleOpciones()">
                         <div class="row justify-content-center">
@@ -140,6 +119,8 @@
         }
         localStorage.setItem('carga','1');
     </script>
+
+    <div ng-init="onload()"></div>
 </body>
 
 

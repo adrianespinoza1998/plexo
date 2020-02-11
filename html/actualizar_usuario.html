@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/opcionstyle.css">
-<div ng-app="app">
+<div id="ventanaUsuario">
     <div>
         <form class="card">
             <div class="card-header">
@@ -54,7 +54,7 @@
                         <input type="password" class="form-control" ng-model="validarContrasena">
                     </div>
                     <div class="text-center col-md-12 mt-3">
-                        <input id="btnModificar" type="submit" class="btn btn-dark align-middle" value="Modificar" ng-click="modificar()">
+                        <input id="btnModificar" type="submit" class="btn btn-dark align-middle" value="Modificar" ng-click="modificar($event)">
                     </div>
                 </div>
             </div>

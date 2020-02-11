@@ -1,5 +1,5 @@
-app.factory("loginService",["$http","$location","sessionService","toggleService",
-    function ($http, $location, sessionService, toggleService) {
+app.factory("loginService",["$http","$location","sessionService","toggleService","$mdDialog",
+    function ($http, $location, sessionService, toggleService,$mdDialog) {
     return{
         login:function (mail,password) {
             $http({
@@ -23,7 +23,6 @@ app.factory("loginService",["$http","$location","sessionService","toggleService"
                     sessionService.setSesion(sesion);
                     sessionService.setEmail(correo);
                     sessionService.setId(id);
-                    //sessionService.setContrasena(password);
                     sessionService.setNombre(nombre);
                     sessionService.setApPaterno(ap_paterno);
                     sessionService.setApMaterno(ap_materno);
@@ -40,10 +39,18 @@ app.factory("loginService",["$http","$location","sessionService","toggleService"
                 }else{
                     var sesion=response.data.estado;
                     sessionService.setSesion(sesion);
-                    alert('Correo o contraseña incorrectos');
+                    //alert('Correo o contraseña incorrectos');
+                    $mdDialog.show($mdDialog.alert({
+                        textContent: 'Correo o contraseña incorrectos',
+                        ok: 'OK'
+                    }));
                 }
             }, function errorCallback(response) {
-                alert('Base de datos no disponible');
+                //alert('Base de datos no disponible');
+                $mdDialog.show($mdDialog.alert({
+                    textContent: 'Base de datos no disponible',
+                    ok: 'OK'
+                }));
                 console.log('Error al llamar datos: '+response.data.error);
             });
         },
@@ -59,7 +66,11 @@ app.factory("loginService",["$http","$location","sessionService","toggleService"
                 if(response.data.error==null){
                     console.log('Sesión guardada');
                 }else{
-                    alert("Error al guardar sesión");
+                    //alert("Error al guardar sesión");
+                    $mdDialog.show($mdDialog.alert({
+                        textContent: 'Error al guardar sesión',
+                        ok: 'OK'
+                    }));
                 }
             },function errorCallback(response) {
                 console.log('Error al conectarse al servidor');
@@ -97,7 +108,11 @@ app.factory("loginService",["$http","$location","sessionService","toggleService"
                     console.log(response.data.error);
                 }
             },function errorCallback(response) {
-                alert('Error al conectarse al servidor');
+                //alert('Error al conectarse al servidor');
+                $mdDialog.show($mdDialog.alert({
+                    textContent: 'Error al conectarse al servidor',
+                    ok: 'OK'
+                }));
             })
         }
     }

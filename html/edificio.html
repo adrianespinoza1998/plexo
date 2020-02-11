@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://www.plexobuilding.com/plexo/css/optionstyle.css">
-<div>
+<div id="ventanaEdificio">
     <form class="card">
         <div class="card-header">
             <div class="row">
@@ -32,7 +32,7 @@
                 <input ng-model="numPisos" type="number" class="form-control" only-numbers>
             </div>
             <div class="col-md-12 text-center mt-3">
-                <input ng-click="crearEdificios()" type="submit" class="btn btn-secondary" value="Guardar">
+                <input ng-click="crearEdificios($event)" type="submit" class="btn btn-secondary" value="Guardar">
             </div>
         </div>
     </form>

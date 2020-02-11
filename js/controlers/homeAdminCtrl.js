@@ -1,11 +1,11 @@
 app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$location","$window","$uibModal",
     "usuarioService","tipoProyectoService","empresaService","listaUsuarioService","edificioService",
     "recintoService","estanciaService","medicionService","archivoService","proyectoService", "guardarIdEdificio",
-    "$mdSidenav","$route","guardarCrearService","$parse","$interval","$timeout","loginService",
+    "$mdSidenav","$route","guardarCrearService","$parse","$interval","$timeout","loginService","$mdDialog",
     function ($scope, sessionService, toggleService, $location,$window,$uibModal,usuarioService,
               tipoProyectoService,empresaService,listaUsuarioService,edificioService,recintoService,
               estanciaService,medicionService,archivoService,proyectoService,guardarIdEdificio,
-              $mdSidenav,$route,guardarCrearService,$parse,$interval,$timeout,loginService) {
+              $mdSidenav,$route,guardarCrearService,$parse,$interval,$timeout,loginService,$mdDialog) {
 
     $scope.openLeftMenu = function() {
         $mdSidenav('left').toggle();
@@ -289,16 +289,67 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
                 $scope.contrasena='';
                 $scope.validarContrasena='';
 
-                $scope.modificar=function () {
+                $scope.modificar=function ($event) {
+                    var parent=angular.element(document.getElementById('ventanaUsuario'));
                     if($scope.email!='' && $scope.contrasena!='' && $scope.nombre!='' && $scope.ap_paterno!='' && $scope.ap_materno!=''){
                         if($scope.contrasena==$scope.validarContrasena){
                             usuarioService.updateUsuario(sessionService.getId(),$scope.email,$scope.contrasena,$scope.nombre,
-                                $scope.ap_paterno,$scope.ap_materno);
+                                $scope.ap_paterno,$scope.ap_materno,parent,$event,$scope);
                         }else{
-                            alert('Las contraseñas no coinciden');
+                            //alert('Las contraseñas no coinciden');
+                            var parent=angular.element(document.getElementById('ventanaUsuario'));
+                            $mdDialog.show({
+                                parent: parent,
+                                targetEvent: $event,
+                                template:
+                                    '<md-dialog aria-label="List dialog">' +
+                                    '  <md-dialog-content class="text-center">'+
+                                    '   <div style="padding: 10px">Contraseñas no coinciden<div>'+
+                                    '    <md-button ng-click="closeDialog()" class="md-primary">' +
+                                    '      Ok' +
+                                    '    </md-button>' +
+                                    '  </md-dialog-actions>' +
+                                    '</md-dialog>',
+                                locals: {
+                                    items: $scope.items
+                                },
+                                controller: function ($scope, $mdDialog, items) {
+                                    $scope.items = items;
+                                    $scope.closeDialog = function() {
+                                        $mdDialog.hide();
+                                    }
+                                }
+                            });
                         }
                     }else{
-                        alert('Uno o más campos vacios');
+                        //alert('Uno o más campos vacios');
+                        var parent=angular.element(document.getElementById('ventanaUsuario'));
+                        /*$mdDialog.show($mdDialog.alert({
+                            textContent:'Uno o más campos vacios',
+                            ok:'OK'
+                        }));*/
+                        $mdDialog.show({
+                            parent: parent,
+                            targetEvent: $event,
+                            template:
+                                '<md-dialog aria-label="List dialog">' +
+                                '  <md-dialog-content class="text-center">'+
+                                '   <div style="padding: 10px">Uno o más campos vacios<div>'+
+                                '    <md-button ng-click="closeDialog()" class="md-primary">' +
+                                '      Ok' +
+                                '    </md-button>' +
+                                '  </md-dialog-actions>' +
+                                '</md-dialog>',
+                            locals: {
+                                items: $scope.items
+                            },
+                            controller: function ($scope, $mdDialog, items) {
+                                $scope.items = items;
+                                $scope.closeDialog = function() {
+                                    $mdDialog.hide();
+                                }
+                            }
+                        });
                     }
                 }
             }
@@ -321,10 +372,18 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
             if(telefono>9999999 && telefono<100000000){
                 empresaService.createEmpresa($scope.nombreEmpresa,$scope.direccionEmpresa,$scope.nro,$scope.telefonoEmpresa);
             }else{
-                alert("Introdusca un telefono de 8 numeros")
+                //alert("Introdusca un telefono de 8 numeros")
+                $mdDialog.show($mdDialog.alert({
+                    textContent:'Introdusca un telefono de 8 números',
+                    ok:'OK'
+                }));
             }
         }else{
-            alert('Uno o más campos vacios');
+            //alert('Uno o más campos vacios');
+            $mdDialog.show($mdDialog.alert({
+                textContent:'Uno o más campos vacios',
+                ok:'OK'
+            }));
         }
     }
 
@@ -350,10 +409,20 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
                 usuarioService.createUsuario($scope.nombre_usuario,$scope.ap_paterno_usuario,$scope.ap_materno_usuario,
                     $scope.rut,$scope.id_empresa_usuario,$scope.correo_usuario,$scope.dv);
             }else{
-                alert('Formulario mal llenado');
+                //alert('Formulario mal llenado');
+                $mdDialog.show($mdDialog.alert({
+                    textContent:'Formulario mal llenado',
+                    ok:'OK'
+                }));
             }
         }else{
-            alert('Uno o más campos vacios');
+            //alert('Uno o más campos vacios');
+
+            $mdDialog.show($mdDialog.alert({
+                textContent:'Uno o más campos vacios',
+                ok:'OK'
+            }));
+
             console.log('usuario:'+$scope.nombre_usuario+', ap_paterno:'+$scope.ap_paterno_usuario+', ap_materno:'+
             $scope.ap_materno_usuario+', rut:'+$scope.rut+', id_empresa:'+$scope.id_empresa_usuario+', correo:'+
                 $scope.correo_usuario);
@@ -369,7 +438,12 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
                     $uibModalInstance.close();
                 }
 
-                $scope.crearEdificios=function () {
+                $scope.nombreEdificio='';
+                $scope.direccionEdificio='';
+                $scope.nroEdificio='';
+                $scope.numPisos='';
+
+                $scope.crearEdificios=function ($event) {
                     if($scope.nombreEdificio!='' && $scope.direccionEdificio!='' && $scope.nroEdificio!='' && $scope.numPisos!=''){
 
                         edificioService.crearEdificio($scope.nombreEdificio,$scope.direccionEdificio,$scope.nroEdificio,$scope.numPisos,function () {
@@ -385,7 +459,34 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
 
                         this.cerrarEdificio();
                     }else{
-                        alert('Campos del formulario vacios');
+                        //alert('Campos del formulario vacios');
+                        /*$mdDialog.show($mdDialog.alert({
+                            textContent:'Uno o más campos vacios',
+                            ok:'OK'
+                        }));*/
+                        var parent=angular.element(document.getElementById('ventanaEdificio'));
+                        $mdDialog.show({
+                            parent: parent,
+                            targetEvent: $event,
+                            template:
+                                '<md-dialog aria-label="List dialog">' +
+                                '  <md-dialog-content class="text-center">'+
+                                '   <div style="padding: 10px">Uno o más campos vacios<div>'+
+                                '    <md-button ng-click="closeDialog()" class="md-primary">' +
+                                '      Ok' +
+                                '    </md-button>' +
+                                '  </md-dialog-actions>' +
+                                '</md-dialog>',
+                            locals: {
+                                items: $scope.items
+                            },
+                            controller: function ($scope, $mdDialog, items) {
+                                $scope.items = items;
+                                $scope.closeDialog = function() {
+                                    $mdDialog.hide();
+                                }
+                            }
+                        });
                     }
                 }
             }
@@ -401,9 +502,11 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
                     $uibModalInstance.close();
                 }
 
-                $scope.crearRecinto=function () {
+                $scope.idEdificio=guardarIdEdificio.getIdEdificio();
 
-                    if($scope.idEdificio!=''){
+                $scope.crearRecinto=function ($event) {
+
+                    if($scope.idEdificio!='' && $scope.idEdificio!=null){
                         console.log($scope.idEdificio+','+$scope.nombreRecinto+','+$scope.numPiso);
                         recintoService.createRecinto(guardarIdEdificio.getIdEdificio(),$scope.nombreRecinto,$scope.numPiso,function () {
                             guardarCrearService.setCrear("html/crear_proyecto.html");
@@ -418,7 +521,34 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
                         });
                         this.cerrarRecinto();
                     }else{
-                        alert('id edificio vacio');
+                        //alert('id edificio vacio');
+                        /*$mdDialog.show($mdDialog.alert({
+                            textContent:'Edificio no seleccionado',
+                            ok:'OK'
+                        }));*/
+                        var parent=angular.element(document.getElementById('ventanaRecinto'));
+                        $mdDialog.show({
+                            parent: parent,
+                            targetEvent: $event,
+                            template:
+                                '<md-dialog aria-label="List dialog">' +
+                                '  <md-dialog-content class="text-center">'+
+                                '   <div style="padding: 10px">Uno o más campos vacios<div>'+
+                                '    <md-button ng-click="closeDialog()" class="md-primary">' +
+                                '      Ok' +
+                                '    </md-button>' +
+                                '  </md-dialog-actions>' +
+                                '</md-dialog>',
+                            locals: {
+                                items: $scope.items
+                            },
+                            controller: function ($scope, $mdDialog, items) {
+                                $scope.items = items;
+                                $scope.closeDialog = function() {
+                                    $mdDialog.hide();
+                                }
+                            }
+                        });
                     }
                 }
             }
@@ -481,10 +611,18 @@ app.controller("homeAdminCtrl",["$scope", "sessionService", "toggleService", "$l
                 });
 
             }else{
-                alert('Tipo de archivo incorrecto, no es un documento html');
+                //alert('Tipo de archivo incorrecto, no es un documento html');
+                $mdDialog.show($mdDialog.alert({
+                    textContent:'Tipo de archivo incorrecto, no es un documento html',
+                    ok:'OK'
+                }));
             }
         }else{
-            alert('Uno o más campos vacios');
+            //alert('Uno o más campos vacios');
+            $mdDialog.show($mdDialog.alert({
+                textContent:'Uno o más campos vacios',
+                ok:'OK'
+            }));
         }
     }
 
