@@ -311,7 +311,7 @@ app.controller("homeCtrl",["$scope", "sessionService", "toggleService", "$locati
                 "\n" +
                 "        geometry: new xeogl.PlaneGeometry({\n" +
                 "            primitive: \"triangles\",\n" +
-                "            center: ["+localStorage.getItem('coord_0')+",0.001,"+localStorage.getItem('coord_1')+"],\n" +
+                "            center: [-0.11,0.001,0.4],\n" +
                 "            xSize: 1,\n" +
                 "            zSize: 1,\n" +
                 "            xSegments: 10,\n" +
